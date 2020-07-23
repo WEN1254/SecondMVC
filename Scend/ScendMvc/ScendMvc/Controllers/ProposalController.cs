@@ -11,7 +11,7 @@ namespace ScendMvc.Controllers
 {
     public class ProposalController : Controller
     {
-          //[Authorize(Roles="Admin")]
+        [Authorize(Roles = "Admin")]
         // GET: /<controller>/
         public IActionResult Index()
         {
