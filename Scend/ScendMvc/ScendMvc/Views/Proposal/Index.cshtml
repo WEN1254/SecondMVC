@@ -1,0 +1,337 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+ 
+<div class="bar-block ">
+    <div class="container tab">
+        <a href="javascript:void(0)" class="bar-item button tablink" onclick="openClass(event, 'class1')">專案大綱</a>
+        <a href="javascript:void(0)" class="bar-item button tablink" onclick="openClass(event, 'class2')">專案內容</a>
+        <a href="javascript:void(0)" class="bar-item button tablink" onclick="openClass(event, 'class3')">回饋設定</a>
+        <a href="javascript:void(0)" class="bar-item button tablink" onclick="openClass(event, 'class4')">提案資料</a>
+    </div>
+</div>
+<!--專案大綱 -->
+<div id="class1" class="container class">
+    <div id="P_outline">
+        <div class="container">
+            <div class="row" id="kon">
+                <div class="col-12 text-center" style="font-size: 13px;">
+                    <div class="col-12 mb-4">在這個區塊您將填寫專案內容中最吸引人募資影片、封面圖片和專案說明，以及最核心的資訊</div>
+                </div>
+                <div class="col-6">
+                    <div class="">
+                        <label class="title">專案標題</label>
+                        <input type="text" class="form-control">
+                        <small class="form-text text-muted">一個好的標題應該要好記、好搜尋、吸引人想點進去看，並讓瀏覽者能在最短的時間內瞭解專案的核心理念。</small>
+                    </div>
+                    <div class="con">
+                        <label class="title">內容摘要</label>
+                        <b-form-textarea id="textarea-rows" placeholder="" rows="8"></b-form-textarea>
+                        <small class="form-text text-muted">使用吸引人的短文說明你的目標以及理念，強調你的獨一無二，讓贊助人對你或你的專案好奇，願意更進一步了解專案。</small>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="col-12">
+                        <label class="title">專案卡預覽</label>
+                        <div class="card">
+                            <div class="embed-responsive embed-responsive-4by3"
+                                 style="background-color: #e4e4e4; width: 100%;">
+                                <b-img v-if="image" : src="image" fluid alt="Fluid image" id="projectCoverPhotoimg"
+                                       style="object-fit: cover;" class="embed-responsive-item"></b-img>
+                            </div>
+                            <div class="card-body my-auto" style="font-size: .8em">
+                                <h6 class="card-title">專案名稱</h6>
+                                <p class="card-text">例：簡短描述專案內容，吸引瀏覽者在 flyingV 首頁上點擊你的專案。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cove col-12 mt-5 mx-auto">
+                    <label class="title">專案封面</label>
+                    <small class="form-text text-muted">
+                        請提供 JPEG、PNG 或 BMP 檔，圖片尺寸至少 1024 x 768 px (4:3)； 2MB
+                        以內。
+                    </small>
+                    <template>
+                        <div>
+                            <div v-else class="feedback_pic"></div>
+                            <b-form-file multiple : file-name-formatter="formatNames" @@change="fileSelected"
+                                         placeholder="上傳圖片" drop-placeholder="Drop file here..." accept=".jpg, .png, .gif">
+                            </b-form-file>
+                        </div>
+                    </template>
+                </div>
+                <div class="col-12">
+                    <label class="title">募資開始與結束時間</label>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <input value="2020-07-21" class="form-control text-box single-line valid"
+                                   data-val="true" data-val-date="The field 開始時間 must be a date."
+                                   data-val-required="The 開始時間 field is required." id="BeginTime" name="BeginTime"
+                                   type="date" aria-describedby="BeginTime-error" aria-invalid="false">
+                            <span class="text-danger field-validation-valid" data-valmsg-for="BeginTime"
+                                  data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input value="2020-07-21" class="form-control text-box single-line valid"
+                                   data-val="true" data-val-date="The field 結束時間 must be a date."
+                                   data-val-required="The 結束時間 field is required." id="EndTime" name="EndTime"
+                                   type="date" aria-describedby="EndTime-error" aria-invalid="false">
+                            <span class="text-danger field-validation-valid" data-valmsg-for="EndTime"
+                                  data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+                    <small class="form-text text-muted mb-3">
+                        專案提交後需要七個工作天進行內容檢視，所以開始時間至少為 7 天後。募資天數最短為 7 天，最長為 60
+                        天。系統預設募資開始時間為 12:00，結束時間為 23:59:59，如需調整請於提交後與您的專案經理討論。
+                    </small>
+                </div>
+                <div class="col-12">
+                    <label class="title">募資類別</label>
+                    <template>
+                        <div>
+                            <b-form-select v-model="selected" class="mb-3">
+                                <b-form-select-option : value="null">遊戲</b-form-select-option>
+                                <b-form-select-option value="a">遊戲</b-form-select-option>
+                                <b-form-select-option value="b">遊戲</b-form-select-option>
+                                <b-form-select-option value="b">音樂</b-form-select-option>
+                                <b-form-select-option value="b">遊戲</b-form-select-option>
+                                <b-form-select-option value="b">遊戲</b-form-select-option>
+                                <b-form-select-option value="b">遊戲</b-form-select-option>
+                            </b-form-select>
+                        </div>
+                    </template>
+                </div>
+                <div class="col-12">
+                    <template>
+                        <div>
+                            <label class="title" for="sb-wrap">募資目標</label>
+                            <b-form-spinbutton id="sb-wrap" wrap min="1" max="10000" placeholder="--">
+                            </b-form-spinbutton>
+                        </div>
+                    </template>
+                </div>
+                <div class="col-12">
+                    <label class="title">專案影片</label>
+                    <input type="text" class="form-control">
+                    <small class="form-text text-muted">
+                        影音介紹：生動影音更能抓住目光，在短時間傳達訊息。 用 2
+                        分鐘左右的影片，試著說明你計劃中的強項：計劃目標、計劃或產品的特色、如何達成計劃、團隊介紹、過往事跡、產品使用展示…等。讓一定要被看到的、贊助者會想看到的部分儘量放在前段。
+                    </small>
+                </div>
+                <div class="col-12">
+                    <label class="title">影片封面</label>
+                    <div class="embed-responsive embed-responsive-16by9" style="background-color: #e4e4e4;">
+                        <img id="projectVideoPhotoimg" style="object-fit: cover;" class="embed-responsive-item"
+                             alt="">
+                    </div>
+                    <small class="form-text text-muted">
+                        請提供 JPEG、PNG 或 BMP 檔，圖片尺寸至少 1280 x 720 px (16:9)； 2MB
+                        以內。
+                    </small>
+                    <label for="projectVideoPhoto" class="btn btn-outline-dark mt-2 w-100">
+                        上傳封面圖片
+                    </label>
+                    <input id="projectVideoPhoto" type="file" style="display: none;">
+                    <input value="" class="text-box single-line" data-val="true"
+                           data-val-required="The 影片封面 field is required." id="projectVideoPhotoinput"
+                           name="projectVideoPhoto" style="height: 0; width:0;border:0;padding:0;" type="text">
+                    <span class="field-validation-valid text-danger" data-valmsg-for="projectVideoPhoto"
+                          data-valmsg-replace="true"></span>
+                </div>
+                <div class="col-12 d-flex justify-content-end">
+                    <b-button variant="secondary" class="mx-2 ">儲存</b-button>
+                    <b-button variant="dark" class="mx-2">發佈專案</b-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 專案內容 -->
+<div id="class2" class="container class">
+    <div class="container">
+        <div class="row">
+            <h6 class="m-auto">在這個區塊您將填寫專案的故事和執行方式，文案在專案內容中扮演詳盡說明細節的角色。</h6>
+            <form id="form1" runat="server" class="col-8">
+                <label class="left_mark">專案內容</label>
+                <div>
+                    <textarea id="editor"></textarea>
+                </div>
+            </form>
+            <p class="col-8 m-auto">利用文字、圖片和影片，將您的計畫詳細清楚的述說給大家聽。圖片大小建議寬度 697 px，考慮到手機使用者的網路速度，單張圖片不建議超過 2 MB，且為求在手機上瀏覽順暢，圖片上若有出現文字，任何文字皆不得小於 16 級。</p>
+            <div class="col-8 d-flex justify-content-end m-auto">
+                <button type="button" class="btn btn-secondary mx-2">儲存</button>
+                <button type="button" class="btn btn-dark mx-2">發佈專案</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 回饋設定 -->
+<div id="class3" class="container class">
+    <div class="container">
+        <div class="row">
+            <main class="col-12 col-md-8" id="Setting">
+                <section class="feedback_info">
+                    <h3 class="left_mark">說明</h3>
+                    <p>
+                        在這個區塊您將制定本次募資專案提供的回饋項目，回饋內容可以十分多元，但是必須清楚寫明回饋金額、內容說明、運費及寄送時間等必要資訊。
+                    </p>
+                    <p>開始制定回饋前你應該知道的事：</p>
+                    <ul>
+                        <li>
+                            我們應該站在贊助者的角度設定回饋項目：<br />清楚列出贊助者會得到什麼，需花費的金額、運費，以及完成回饋所需花的時間。若專案性質並非完成一件商品，可考慮另外設計回饋方式（實體或非實體）。請務必考量到回饋的可行性以及所需時間。
+                        </li>
+                        <li>
+                            好的回饋項目可以讓贊助人感受到：
+                            <ol>
+                                <li>參與感</li>
+                                <li>情感或精神上的回饋</li>
+                                <li>價格上的優惠</li>
+                                <li>自己是獨一無二</li>
+                            </ol>
+                        </li>
+                        <li>
+                            好的回饋會讓贊助者在收到回饋項目後很開心，並且分享給更多人。而設計回饋時，除了實體的物品之外，也可以透過舉辦活動或善加利用數位製品，不僅可以降低成本，更可能帶來意想不到的正面效果。
+                        </li>
+                    </ul>
+                </section>
+                <section class="feedback_list">
+                    <h3 class="left_mark">回饋列表</h3>
+                    <b-button v-b-modal.modal-lg block variant="danger">新增回饋</b-button>
+                    <div class="row justify-content-end my-3 pr-1">
+                        <b-button variant="secondary" class="mx-2">儲存</b-button>
+                        <b-button variant="dark" class="mx-2">發佈專案</b-button>
+                    </div>
+                    <b-modal id="modal-lg" size="lg" title="編輯回饋資訊" class="feedback_form">
+                        <div class="row px-3">
+                            <div class="list_content col-6">
+                                <h4 class="left_mark">回饋金額</h4>
+                                <b-form-input v-model="text" placeholder="Enter your name"></b-form-input>
+                                <h4 class="left_mark">內容摘要</h4>
+                                <b-form-textarea id="textarea-rows"
+                                                 placeholder="請在此描述這個回饋項目所包含的品項，您也可以為每一個回饋組合創造名稱以利推廣。" rows="8">
+                                </b-form-textarea>
+                            </div>
+                            <div class="list_cover col-6">
+                                <h4 class="left_mark">回饋封面</h4>
+                                <b-img v-if="image" : src="image" fluid alt="Fluid image"></b-img>
+                                <div v-else class="feedback_pic"></div>
+                                <b-form-file multiple : file-name-formatter="formatNames" @@change="fileSelected"
+                                             placeholder="上傳圖片" drop-placeholder="Drop file here..."
+                                             accept=".jpg, .png, .gif">
+                                </b-form-file>
+                                <p>請提供 JPEG 或 PNG 檔，圖片尺寸至少 1024 x 768 px； 並將檔案大小控制在1MB以內。</p>
+                            </div>
+                            <div class="list_delivery col-12">
+                                <h4 class="left_mark">運送方式</h4>
+                                <b-form-select v-model="selected" : options="options"></b-form-select>
+                                <p>大部份的募資專案都會將運費包含在贊助金額中，若您的回饋品運費過高，或有國外贊助者，請於此設定您的運費。</p>
+                                <h4 class="left_mark">預計寄送時間</h4>
+                                <p>此項回饋預計送達時程</p>
+                                <b-form-input id="type-date" type="date" v-model="date"></b-form-input>
+                                <h4 class="left_mark">回饋數量限制</h4>
+                                <b-form-input id="type-number" type="number" v-model="number"></b-form-input>
+                                <h4 class="left_mark">限時開始與結束時間</h4>
+                                <div class="d-flex">
+                                    <b-form-input id="type-date" type="date" v-model="date" class="col-6">
+                                    </b-form-input>
+                                    <b-form-input id="type-date" type="date" v-model="date" class="col-6">
+                                    </b-form-input>
+                                </div>
+                            </div>
+                        </div>
+                    </b-modal>
+                </section>
+
+            </main>
+        </div>
+    </div>
+</div>
+<!--提案資料 -->
+<div id="class4" class="container class">
+    <div id="P_information" class="container">
+        <div class="row  list_block justify-content-center">
+            <div class="col-8 col-md-8  ">
+                <!-- 填表須知 -->
+                <h5>在這個區塊您將撰寫提案者需要提供的個人資料及身份驗證，在填寫提案團隊資訊的同時，您可以增加更多和本次專案相關的資訊連結及粉絲專頁，讓瀏覽者對您有更多的了解。</h5>
+                <!-- 提案負責人姓名 -->
+                <label class="left_mark">提案負責人姓名</label>
+                <input v-model="Name" type="text" class="form-control">
+                <p>此名稱為核實及平台提案資料留存用，請填寫真實姓名。目前 flyingV 只限定台灣用戶提案，國外單位提案必須有台灣分公司或代理人，並且由台灣代理人提交專案。</p>
+            </div>
+            <!-- 電子郵件 -->
+            <div class="col-8 col-md-8   ">
+                <label class="left_mark">電子郵件</label>
+                <input v-model="email" type="text" class="form-control">
+                <p>
+                    為了確保負責輔導本專案的專案經理可以聯絡到您，請填寫聯絡信箱並完成驗證。
+                    專案提交並審核完成後，我們會將專案修改建議書寄至您所填寫的電子信箱中。
+                </p>
+            </div>
+            <!-- 行動電話 -->
+            <div class="col-8 col-md-8   ">
+                <label class="left_mark">行動電話</label>
+                <input v-model="Tel" type="text" class="form-control">
+                <p>為了確保負責輔導本專案的專案經理可以聯絡到您，請填寫行動電話並完成驗證。</p>
+            </div>
+            <!-- 提案人身份 -->
+            <div class="col-8 col-md-8   ">
+                <label class="left_mark">提案人身份</label>
+                <template>
+                    <div class="row justify-content-center">
+                        <b-form-select class="col-4 col-md-4 mr-4" v-model="selected_identity"
+                                       : options="options_identity">
+                        </b-form-select>
+                        <b-form-input class="col-7 col-md-7" v-model="identity"></b-form-input>
+                    </div>
+                </template>
+                <p>
+                    提案者必須是具備完全行為能力的自然人、合法登記的法人或團體。若提案者為未成年人，應由其法定代理人閱讀、暸解，才可進行提案流程。 提案前，應完成註冊程序，並應依本平台當時所訂之方式完成會員認證。
+                </p>
+            </div>
+            <hr class="list_hr col-8 col-md-8">
+            <h6 class="col-8 col-md-8">以下資訊為團隊資訊，將顯示於專案葉面中，並同步更新您的會員資料。</h6>
+            <!-- 團隊圖片 -->
+            <div class="col-8 col-md-8   ">
+                <label class="left_mark">團隊圖片</label>
+                <b-img v-if="image_team" : src="image_team" fluid alt="Fluid image_team"></b-img>
+                <div v-else class="feedback_pic"></div>
+                <b-form-file multiple : file-name-formatter="formatNames" @@change="fileSelected_image_team"
+                             placeholder="上傳圖片" drop-placeholder="Drop file here..." accept=".jpg, .png, .gif">
+                </b-form-file>
+                <p>此圖片為您目前的會員圖片，建議更新為適合此專案的個人或團隊照片。</p>
+            </div>
+            <!-- 顯示名稱 -->
+            <div class="col-8 col-md-8   ">
+                <label class="left_mark">顯示名稱</label>
+                <input v-model="ShowName" type="text" class="form-control">
+                <p>顯示名稱將會被瀏覽者視為此計畫的執行團隊。此名稱為您目前的會員名稱，建議更新為適合此專案的個人或團隊名稱。</p>
+            </div>
+            <!-- 自我介紹 -->
+            <div class="col-8 col-md-8   ">
+                <label class="left_mark">自我介紹</label>
+                <input v-model="introduction" type="text" class="form-control">
+                <p>自我介紹將會被瀏覽者視為此計畫執行團隊的簡介。此區塊為您目前的會員介紹，建議更新為適合此專案的個人或團隊介紹。</p>
+            </div>
+            <!-- 粉絲專業 -->
+            <div class="col-8 col-md-8   ">
+                <label class="left_mark">粉絲專業</label>
+                <input v-model="Fanpage" type="text" class="form-control">
+                <p>如果有和計畫相關的粉絲專頁，請直接貼上完整網址。</p>
+            </div>
+            <!-- 專案網站 -->
+            <div class="col-8 col-md-8   ">
+                <label class="left_mark">專案網站</label>
+                <input v-model="Projectwebsite" type="text" class="form-control">
+                <p>如果有和計畫相關的粉絲專頁，請直接貼上完整網址。</p>
+            </div>
+            <!-- 按鈕 -->
+            <div class="col-8 col-md-8 d-flex justify-content-end">
+                <b-button variant="secondary" class="mx-2 ">儲存</b-button>
+                <b-button variant="dark" class="mx-2">發佈專案</b-button>
+            </div>
+        </div>
+    </div>
+</div>

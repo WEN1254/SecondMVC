@@ -1,0 +1,190 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    /* list-style-type: none; */
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 15px;
+}
+
+.bar-block {
+    margin: 50px 0;
+}
+
+.tab {
+    text-align: center;
+}
+
+.bar-item {
+    border-bottom: 3px solid #9B9B9B;
+    color: #9B9B9B;
+    font-size: 20px;
+    margin: 0 10px;
+    /* font-weight: bold; */
+}
+
+    .bar-item:hover {
+        border-bottom: 3px solid red;
+        text-decoration: none;
+        color: red;
+        /* font-weight: bold; */
+    }
+/* 專案大綱 */
+.na {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.con {
+    margin-top: 20px;
+}
+
+#kon {
+    max-width: 780px;
+    width: 100%;
+    padding: 0px 20px 50px;
+    margin: auto;
+}
+
+label.title {
+    color: #00bbd6;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding-left: 12px;
+    position: relative;
+}
+
+    label.title::before {
+        content: "";
+        display: inline-block;
+        position: relative;
+        background: #00bbd6;
+        height: 12px;
+        width: 3px;
+        left: -7px;
+    }
+/* 專案內容 */
+.ck-editor__editable_inline {
+    min-height: 400px;
+}
+
+#form1 {
+    margin: auto;
+}
+/* 回饋設定 */
+#Setting {
+    list-style-type: circle;
+    padding: 0 3rem;
+    /* background-color: #eee; */
+    margin: auto;
+}
+
+    #Setting ul {
+        padding-left: 3rem;
+    }
+
+    #Setting ol {
+        padding-left: 5rem;
+        /* background-color: antiquewhite; */
+        list-style-type: square;
+    }
+
+.left_mark {
+    /* border-left: .5rem solid rgb(22, 185, 235); */
+    display: block;
+    position: relative;
+    padding-left: 1rem;
+    margin: 1rem 0;
+    font-weight: bold;
+    color: #00bbd6;
+}
+
+    .left_mark::before {
+        content: '';
+        position: absolute;
+        top: 15%;
+        left: 0;
+        width: .3rem;
+        height: 80%;
+        background-color: #00bbd6;
+    }
+
+.feedback_form {
+    display: flex;
+}
+
+.feedback_pic {
+    background-color: #eee;
+    width: 100%;
+    height: 30vh;
+}
+
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+    content: 'Browse';
+    background-color: white;
+    color: black;
+    /* transition: .5s; */
+}
+/* 提案資料 */
+.list_block label {
+    color: #00bbd6;
+}
+
+.list_block p {
+    color: #aaa;
+    font-size: 12px;
+    padding-bottom: 20px;
+}
+
+.list_block h5 {
+    padding-bottom: 20px;
+}
+
+.list_block label::before {
+    content: "";
+    color: #00bbd6;
+    height: 12px;
+    width: 10px;
+}
+
+.list_hr {
+    margin-right: -15px;
+    margin-left: -15px;
+    padding: 0px 15px;
+    border-top: 1px solid #aaa;
+    box-sizing: border-box;
+}
+
+.feedback_pic {
+    background-color: #eee;
+    width: 100%;
+    height: 30vh;
+}
+
+.left_mark {
+    /* border-left: .5rem solid rgb(22, 185, 235); */
+    display: block;
+    position: relative;
+    padding-left: 1rem;
+    margin: 1rem 0;
+    font-weight: bold;
+    color: #00bbd6;
+}
+
+    .left_mark::before {
+        content: '';
+        position: absolute;
+        top: 15%;
+        left: 0;
+        width: 5px !important;
+        height: 80%;
+        background-color: #00bbd6;
+    }
+
+.class1,
+.class2,
+.class3,
+.class4 {
+    border: 1px solid black;
+}
