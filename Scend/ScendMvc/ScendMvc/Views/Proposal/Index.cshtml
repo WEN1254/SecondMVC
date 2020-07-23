@@ -3,10 +3,10 @@
     ViewData["Title"] = "Index";
 }
 
- 
+
 <div class="bar-block ">
     <div class="container tab">
-        <a href="javascript:void(0)" class="bar-item button tablink" onclick="openClass(event, 'class1')">專案大綱</a>
+        <a href="javascript:void(0)" class="bar-item button tablink testbtn" onclick="openClass(event, 'class1')">專案大綱</a>
         <a href="javascript:void(0)" class="bar-item button tablink" onclick="openClass(event, 'class2')">專案內容</a>
         <a href="javascript:void(0)" class="bar-item button tablink" onclick="openClass(event, 'class3')">回饋設定</a>
         <a href="javascript:void(0)" class="bar-item button tablink" onclick="openClass(event, 'class4')">提案資料</a>
@@ -335,3 +335,6 @@
         </div>
     </div>
 </div>
+@section Scripts {
+    <script src="~/js/Proposal.js"></script>
+}

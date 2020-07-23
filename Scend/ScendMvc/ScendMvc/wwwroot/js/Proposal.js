@@ -21,147 +21,143 @@
 var mybtn = document.getElementsByClassName("testbtn")[0];
 mybtn.click();
 
-   
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .then(editor => {
-            console.log(editor);
-    })
 
-    //<!--專案大綱Script -->
-       
-            var Poutline = new Vue({
-                el: "#P_outline",
-            data() {
-                return {
-                selected: null,
+ClassicEditor.create(document.querySelector('#editor')).then(editor => {console.log(editor);})
+
+//<!--專案大綱Script -->
+
+var Poutline = new Vue({
+    el: "#P_outline",
+    data() {
+        return {
+            selected: null,
             file: null,
             image: ''
         }
     },
-            methods: {
-                formatNames(files) {
-                    if (files.length === 1) {
-                        return files[0].name
-                    } else {
-                        return `${files.length} files selected`
-        }
-    },
-                fileSelected(event) {
-                    const file = event.target.files.item(0); //取得File物件
+    methods: {
+        formatNames(files) {
+            if (files.length === 1) {
+                return files[0].name
+            } else {
+                return `${files.length} files selected`
+            }
+        },
+        fileSelected(event) {
+            const file = event.target.files.item(0); //取得File物件
             const reader = new FileReader(); //建立FileReader 監聽 Load 事件
             reader.addEventListener('load', this.imageLoader);
             reader.readAsDataURL(file);
         },
-                imageLoader(event) {
-                this.image = event.target.result;
+        imageLoader(event) {
+            this.image = event.target.result;
         }
     },
 });
-    
-        //<!--提案回饋Script -->
-          
-                var Setting = new Vue({
-                    el: '#Setting',
-            data: {},
-            data() {
-                return {
-                    text: '',
-                value: '',
-                selected: null,
-                    options: [{
-                    value: null,
+
+//<!--提案回饋Script -->
+
+var Setting = new Vue({
+    el: '#Setting',
+    data: {},
+    data() {
+        return {
+            text: '',
+            value: '',
+            selected: null,
+            options: [{
+                value: null,
                 text: 'Please select an option'
             },
-                        {
-                    value: 'a',
+            {
+                value: 'a',
                 text: 'This is First option'
             },
-                        {
-                    value: 'b',
+            {
+                value: 'b',
                 text: 'Selected Option'
             },
-                        {
-                    value: {
+            {
+                value: {
                     C: '3PO'
+                },
+                text: 'This is an option with object value'
             },
-            text: 'This is an option with object value'
-        },
-                        // {value: 'd', text: 'This one is disabled', disabled: true }
+                // {value: 'd', text: 'This one is disabled', disabled: true }
             ],
             number: '',
             date: '',
             image: ''
         }
     },
-            methods: {
-                    formatNames(files) {
-                    if (files.length === 1) {
-                        return files[0].name
-                    } else {
-                        return `${files.length} files selected`
+    methods: {
+        formatNames(files) {
+            if (files.length === 1) {
+                return files[0].name
+            } else {
+                return `${files.length} files selected`
             }
         },
-                fileSelected(event) {
-                    const file = event.target.files.item(0); //取得File物件
-                const reader = new FileReader(); //建立FileReader 監聽 Load 事件
-                reader.addEventListener('load', this.imageLoader);
-                reader.readAsDataURL(file);
-            },
-                imageLoader(event) {
-                    this.image = event.target.result;
-            }
+        fileSelected(event) {
+            const file = event.target.files.item(0); //取得File物件
+            const reader = new FileReader(); //建立FileReader 監聽 Load 事件
+            reader.addEventListener('load', this.imageLoader);
+            reader.readAsDataURL(file);
         },
-    })
-  
-            //<!--提案資料Script -->
+        imageLoader(event) {
+            this.image = event.target.result;
+        }
+    },
+})
 
-                    var Pinformation = new Vue({
-                        el: '#P_information',
-            data: {},
-            data() {
-                return {
-                        selected_identity: null,
-                    Name: '',
-                    email: '',
-                    Tel: '',
-                    identity: '',
-                    ShowName: '',
-                    introduction: '',
-                    Fanpage: '',
-                    Projectwebsite: '',
-                    options_identity: [{
-                        value: null,
-                    text: '個人'
-                },
-                        {
-                        value: 'a',
-                    text: '公司'
-                },
-                        {
-                        value: 'b',
-                    text: '非營利'
-                },
+//<!--提案資料Script -->
+
+var Pinformation = new Vue({
+    el: '#P_information',
+    data: {},
+    data() {
+        return {
+            selected_identity: null,
+            Name: '',
+            email: '',
+            Tel: '',
+            identity: '',
+            ShowName: '',
+            introduction: '',
+            Fanpage: '',
+            Projectwebsite: '',
+            options_identity: [{
+                value: null,
+                text: '個人'
+            },
+            {
+                value: 'a',
+                text: '公司'
+            },
+            {
+                value: 'b',
+                text: '非營利'
+            },
             ],
             image_team: '',
         }
     },
-            methods: {
-                        formatNames(files) {
-                    if (files.length === 1) {
-                        return files[0].name
-                    } else {
-                        return `${files.length} files selected`
-                }
-            },
-                fileSelected_image_team(event) {
-                    const file = event.target.files.item(0); //取得File物件
-                    const reader = new FileReader(); //建立FileReader 監聽 Load 事件
-                    reader.addEventListener('load', this.imageLoader_image_team);
-                    reader.readAsDataURL(file);
-                },
-                imageLoader_image_team(event) {
-                        this.image_team = event.target.result;
-                },
+    methods: {
+        formatNames(files) {
+            if (files.length === 1) {
+                return files[0].name
+            } else {
+                return `${files.length} files selected`
             }
-        })
+        },
+        fileSelected_image_team(event) {
+            const file = event.target.files.item(0); //取得File物件
+            const reader = new FileReader(); //建立FileReader 監聽 Load 事件
+            reader.addEventListener('load', this.imageLoader_image_team);
+            reader.readAsDataURL(file);
+        },
+        imageLoader_image_team(event) {
+            this.image_team = event.target.result;
+        },
+    }
+})
