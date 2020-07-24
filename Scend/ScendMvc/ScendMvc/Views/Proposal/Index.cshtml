@@ -4,6 +4,8 @@
 }
 
 
+
+<!-- Tab links -->
 <div class="bar-block ">
     <div class="container tab">
         <a href="javascript:void(0)" class="bar-item button tablink testbtn" onclick="openClass(event, 'class1')">專案大綱</a>
@@ -12,7 +14,8 @@
         <a href="javascript:void(0)" class="bar-item button tablink" onclick="openClass(event, 'class4')">提案資料</a>
     </div>
 </div>
-<!--專案大綱 -->
+
+<!-- 專案大綱 -->
 <div id="class1" class="container class">
     <div id="P_outline">
         <div class="container">
@@ -38,7 +41,7 @@
                         <div class="card">
                             <div class="embed-responsive embed-responsive-4by3"
                                  style="background-color: #e4e4e4; width: 100%;">
-                                <b-img v-if="image" : src="image" fluid alt="Fluid image" id="projectCoverPhotoimg"
+                                <b-img v-if="image" :src="image" fluid alt="Fluid image" id="projectCoverPhotoimg"
                                        style="object-fit: cover;" class="embed-responsive-item"></b-img>
                             </div>
                             <div class="card-body my-auto" style="font-size: .8em">
@@ -57,7 +60,7 @@
                     <template>
                         <div>
                             <div v-else class="feedback_pic"></div>
-                            <b-form-file multiple : file-name-formatter="formatNames" @@change="fileSelected"
+                            <b-form-file multiple :file-name-formatter="formatNames" @@change="fileSelected"
                                          placeholder="上傳圖片" drop-placeholder="Drop file here..." accept=".jpg, .png, .gif">
                             </b-form-file>
                         </div>
@@ -82,6 +85,7 @@
                             <span class="text-danger field-validation-valid" data-valmsg-for="EndTime"
                                   data-valmsg-replace="true"></span>
                         </div>
+
                     </div>
                     <small class="form-text text-muted mb-3">
                         專案提交後需要七個工作天進行內容檢視，所以開始時間至少為 7 天後。募資天數最短為 7 天，最長為 60
@@ -93,7 +97,7 @@
                     <template>
                         <div>
                             <b-form-select v-model="selected" class="mb-3">
-                                <b-form-select-option : value="null">遊戲</b-form-select-option>
+                                <b-form-select-option :value="null">遊戲</b-form-select-option>
                                 <b-form-select-option value="a">遊戲</b-form-select-option>
                                 <b-form-select-option value="b">遊戲</b-form-select-option>
                                 <b-form-select-option value="b">音樂</b-form-select-option>
@@ -204,6 +208,7 @@
                         <b-button variant="secondary" class="mx-2">儲存</b-button>
                         <b-button variant="dark" class="mx-2">發佈專案</b-button>
                     </div>
+
                     <b-modal id="modal-lg" size="lg" title="編輯回饋資訊" class="feedback_form">
                         <div class="row px-3">
                             <div class="list_content col-6">
@@ -216,9 +221,9 @@
                             </div>
                             <div class="list_cover col-6">
                                 <h4 class="left_mark">回饋封面</h4>
-                                <b-img v-if="image" : src="image" fluid alt="Fluid image"></b-img>
+                                <b-img v-if="image" :src="image" fluid alt="Fluid image"></b-img>
                                 <div v-else class="feedback_pic"></div>
-                                <b-form-file multiple : file-name-formatter="formatNames" @@change="fileSelected"
+                                <b-form-file multiple :file-name-formatter="formatNames" @@change="fileSelected"
                                              placeholder="上傳圖片" drop-placeholder="Drop file here..."
                                              accept=".jpg, .png, .gif">
                                 </b-form-file>
@@ -226,7 +231,7 @@
                             </div>
                             <div class="list_delivery col-12">
                                 <h4 class="left_mark">運送方式</h4>
-                                <b-form-select v-model="selected" : options="options"></b-form-select>
+                                <b-form-select v-model="selected" :options="options"></b-form-select>
                                 <p>大部份的募資專案都會將運費包含在贊助金額中，若您的回饋品運費過高，或有國外贊助者，請於此設定您的運費。</p>
                                 <h4 class="left_mark">預計寄送時間</h4>
                                 <p>此項回饋預計送達時程</p>
@@ -245,11 +250,12 @@
                     </b-modal>
                 </section>
 
+
             </main>
         </div>
     </div>
 </div>
-<!--提案資料 -->
+<!-- 提案資料 -->
 <div id="class4" class="container class">
     <div id="P_information" class="container">
         <div class="row  list_block justify-content-center">
@@ -282,7 +288,7 @@
                 <template>
                     <div class="row justify-content-center">
                         <b-form-select class="col-4 col-md-4 mr-4" v-model="selected_identity"
-                                       : options="options_identity">
+                                       :options="options_identity">
                         </b-form-select>
                         <b-form-input class="col-7 col-md-7" v-model="identity"></b-form-input>
                     </div>
@@ -296,9 +302,9 @@
             <!-- 團隊圖片 -->
             <div class="col-8 col-md-8   ">
                 <label class="left_mark">團隊圖片</label>
-                <b-img v-if="image_team" : src="image_team" fluid alt="Fluid image_team"></b-img>
+                <b-img v-if="image_team" :src="image_team" fluid alt="Fluid image_team"></b-img>
                 <div v-else class="feedback_pic"></div>
-                <b-form-file multiple : file-name-formatter="formatNames" @@change="fileSelected_image_team"
+                <b-form-file multiple :file-name-formatter="formatNames" @@change="fileSelected_image_team"
                              placeholder="上傳圖片" drop-placeholder="Drop file here..." accept=".jpg, .png, .gif">
                 </b-form-file>
                 <p>此圖片為您目前的會員圖片，建議更新為適合此專案的個人或團隊照片。</p>

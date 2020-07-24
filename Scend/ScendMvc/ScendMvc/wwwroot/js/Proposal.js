@@ -22,9 +22,8 @@ var mybtn = document.getElementsByClassName("testbtn")[0];
 mybtn.click();
 
 
-ClassicEditor.create(document.querySelector('#editor')).then(editor => {console.log(editor);})
+ClassicEditor.create(document.querySelector('#editor')).then(editor => { console.log(editor); })
 
-//<!--專案大綱Script -->
 
 var Poutline = new Vue({
     el: "#P_outline",
@@ -53,9 +52,9 @@ var Poutline = new Vue({
             this.image = event.target.result;
         }
     },
+
 });
 
-//<!--提案回饋Script -->
 
 var Setting = new Vue({
     el: '#Setting',
@@ -83,7 +82,7 @@ var Setting = new Vue({
                 },
                 text: 'This is an option with object value'
             },
-                // {value: 'd', text: 'This one is disabled', disabled: true }
+                // { value: 'd', text: 'This one is disabled', disabled: true }
             ],
             number: '',
             date: '',
@@ -110,7 +109,6 @@ var Setting = new Vue({
     },
 })
 
-//<!--提案資料Script -->
 
 var Pinformation = new Vue({
     el: '#P_information',
@@ -140,6 +138,7 @@ var Pinformation = new Vue({
             },
             ],
             image_team: '',
+
         }
     },
     methods: {
@@ -156,6 +155,7 @@ var Pinformation = new Vue({
             reader.addEventListener('load', this.imageLoader_image_team);
             reader.readAsDataURL(file);
         },
+
         imageLoader_image_team(event) {
             this.image_team = event.target.result;
         },
