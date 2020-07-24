@@ -11,7 +11,7 @@ namespace ScendMvc.Controllers
 {
     public class ProposalController : Controller
     {
-        [Authorize]
+       // [Authorize]
         // GET: /<controller>/
         public IActionResult Index()
         {
