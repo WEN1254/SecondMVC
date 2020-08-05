@@ -76,74 +76,145 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsFavorite)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Summary)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjectCover)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimeStart)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimeEnd)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Target)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Video)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Content)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Principal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Identity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImgTeam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DisplayName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Resume)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FanPage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Web)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CurrentAmount)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProposalId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProposalId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProposalId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsFavorite)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Summary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectCover)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeStart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeEnd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Target)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Video)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Principal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Identity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImgTeam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisplayName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Resume)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FanPage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Web)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CurrentAmount)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProposalId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ProposalId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProposalId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<div class="container" id="Fcard">
+    <div class="row">
+        <div class="col-3" v-for="item in items">
+
+            <a :href=`Proposals/Details/${item.proposalId}`>
+                <b-card img-alt="Image" img-top tag="article" style="max-width: 20rem;"
+                        class=" mb-2">
+
+                    <img :src=`${item.projectCover}`>
+                    <div class="card-head form-inline border-bottom align-items-start">
+                        <p class="mr-auto">資金</p>
+                        <p v-on:click="changex(index)" class="ml-auto" v-if="item.isVIP">❤️</p>
+                        <label v-on:click="changex(index)" class="ml-auto" v-else>🤍</label>
+                    </div>
+                    <b-card-text id="productId">{{item.proposalId}}</b-card-text>
+                    <b-card-title>{{item.title}}</b-card-title>
+                    <b-card-text>{{item.summary}}</b-card-text>
+                    <b-progress :value="item.currentAmount" :max="item.target" :precision="2" show-progress class="mb-3">
+                    </b-progress>
+                </b-card>
+            </a>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+    @section Scripts {
+        <script>
+
+            function index(x) {
+                var index = this.Fcard.items[x];
+                console.log(index);
+            }
+
+
+            //var items = [{"productName":"鉛筆1       ","productId":1,"pictureURL":"https://picsum.photos/300/200/?random=1           ","description":"45                                                                                                  ","isVIP":false},{"productName":"鉛筆2       ","productId":2,"pictureURL":"https://picsum.photos/300/200/?random=1           ","description":"12                                                                                                  ","isVIP":false},{"productName":"鉛筆3       ","productId":3,"pictureURL":"https://picsum.photos/300/200/?random=1           ","description":"34                                                                                                  ","isVIP":false},{"productName":"鉛筆4       ","productId":4,"pictureURL":"https://picsum.photos/300/200/?random=1           ","description":"314                                                                                                 ","isVIP":false},{"productName":"鉛筆6       ","productId":6,"pictureURL":"https://picsum.photos/300/200/?random=1           ","description":"532                                                                                                 ","isVIP":false},{"productName":"鉛筆11      ","productId":7,"pictureURL":"https://picsum.photos/300/200/?random=1           ","description":"53                                                                                                  ","isVIP":false},{"productName":"鉛筆12      ","productId":12,"pictureURL":"https://picsum.photos/300/200/?random=1           ","description":"45                                                                                                  ","isVIP":false}]
+
+            $.ajax({
+                url: "Proposals/Details/api/Proposals",
+                type: 'GET',
+                data: '',
+                async: true,
+                success: function (response) {
+                    console.log(response);
+
+
+
+                    GetProducts(response);
+
+
+                }
+            });
+            function GetProducts(input) {
+                this.Fcard.items = input;
+            };
+
+            var Fcard = new Vue({
+                el: "#Fcard",
+                data: {
+                    items: []
+                }
+            })
+        </script>
+    }
