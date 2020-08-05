@@ -1,0 +1,252 @@
+﻿@model ScendMvc.Models.Proposal
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-md-4 col-6 m-auto">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="ProposalId" class="control-label"></label>
+                <input asp-for="ProposalId" class="form-control" />
+                <span asp-validation-for="ProposalId" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                    <label asp-for="IsFavorite" class="control-label"></label>
+                    <input asp-for="IsFavorite" class="form-control" />
+                    <span asp-validation-for="IsFavorite" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <label class="title">專案標題</label>
+                @*<label asp-for="Title" class="control-label"></label>*@
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+                <small class="form-text text-muted">一個好的標題應該要好記、好搜尋、吸引人想點進去看，並讓瀏覽者能在最短的時間內瞭解專案的核心理念。</small>
+            </div>
+
+            <div class="form-group">
+                <label class="title">內容摘要</label>
+                @*<label asp-for="Summary" class="control-label"></label>*@
+                <input asp-for="Summary" class="form-control" />
+                <span asp-validation-for="Summary" class="text-danger"></span>
+                <small class="form-text text-muted">使用吸引人的短文說明你的目標以及理念，強調你的獨一無二，讓贊助人對你或你的專案好奇，願意更進一步了解專案。</small>
+            </div>
+            <div class="form-group">
+                <label class="title">專案封面</label>
+                @*<label asp-for="ProjectCover" class="control-label"></label>*@
+                <input type="file" name="name" value="" onchange="Selected(event,1)" />
+                <input asp-for="ProjectCover" id="case1" class="form-control" />
+                <span asp-validation-for="ProjectCover" class="text-danger"></span>
+                <small class="form-text text-muted">
+                    請提供 JPEG、PNG 或 BMP 檔，圖片尺寸至少 1024 x 768 px (4:3)； 2MB
+                    以內。
+                </small>
+            </div>
+            <div class="row">
+                <div class="form-group mr-auto col-lg-5 col-12">
+                    <label class="title">募資開始時間</label>
+                    @*<label asp-for="TimeStart" class="control-label"></label>*@
+                    <input asp-for="TimeStart" class="form-control" />
+                    <span asp-validation-for="TimeStart" class="text-danger"></span>
+                </div>
+                <div class="form-group col-lg-5 col-12">
+                    <label class="title">募資結束時間</label>
+                    @*<label asp-for="TimeEnd" class="control-label"></label>*@
+                    <input asp-for="TimeEnd" class="form-control" />
+                    <span asp-validation-for="TimeEnd" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="title">募資類別</label>
+                @*<label asp-for="Category" class="control-label"></label>*@
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="title" for="sb-wrap">募資目標</label>
+                @*<label asp-for="Target" class="control-label"></label>*@
+                <input asp-for="Target" class="form-control" />
+                <span asp-validation-for="Target" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="title">專案影片</label>
+                @*<label asp-for="Video" class="control-label"></label>*@
+                <input asp-for="Video" class="form-control" />
+                <span asp-validation-for="Video" class="text-danger"></span>
+                <small class="form-text text-muted">
+                    影音介紹：生動影音更能抓住目光，在短時間傳達訊息。 用 2
+                    分鐘左右的影片，試著說明你計劃中的強項：計劃目標、計劃或產品的特色、如何達成計劃、團隊介紹、過往事跡、產品使用展示…等。讓一定要被看到的、贊助者會想看到的部分儘量放在前段。
+                </small>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <label class="title">專案內容</label>
+
+                @*<label asp-for="Content" class="control-label"></label>*@
+                <input asp-for="Content" class="form-control" />
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group">
+                <label class="title">提案負責人姓名</label>
+                @*<label asp-for="Principal" class="control-label"></label>*@
+                <input asp-for="Principal" class="form-control" />
+                <span asp-validation-for="Principal" class="text-danger"></span>
+                <small class="form-text text-muted">
+                    此名稱為核實及平台提案資料留存用，請填寫真實姓名。目前 flyingV 只限定台灣用戶提案，國外單位提案必須有台灣分公司或代理人，並且由台灣代理人提交專案。
+                </small>
+            </div>
+            <div class="form-group">
+                <label class="title">電子郵件</label>
+                @*<label asp-for="Email" class="control-label"></label>*@
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+                <small class="form-text text-muted">
+                    為了確保負責輔導本專案的專案經理可以聯絡到您，請填寫聯絡信箱並完成驗證。
+                    專案提交並審核完成後，我們會將專案修改建議書寄至您所填寫的電子信箱中。
+                </small>
+
+            </div>
+            <div class="form-group">
+                <label class="title">行動電話</label>
+                @*<label asp-for="Tel" class="control-label"></label>*@
+                <input asp-for="Tel" class="form-control" />
+                <span asp-validation-for="Tel" class="text-danger"></span>
+                <small class="form-text text-muted">
+                    為了確保負責輔導本專案的專案經理可以聯絡到您，請填寫行動電話並完成驗證。
+                </small>
+            </div>
+            <div class="form-group">
+                <label class="title">提案人身份</label>
+                @*<label asp-for="Identity" class="control-label"></label>*@
+                <input asp-for="Identity" class="form-control" />
+                <span asp-validation-for="Identity" class="text-danger"></span>
+                <small class="form-text text-muted">
+                    提案者必須是具備完全行為能力的自然人、合法登記的法人或團體。若提案者為未成年人，應由其法定代理人閱讀、暸解，才可進行提案流程。 提案前，應完成註冊程序，並應依本平台當時所訂之方式完成會員認證。
+                </small>
+            </div>
+            @*<div class="form-group">
+                    <label asp-for="IdNumber" class="control-label"></label>
+                    <input asp-for="IdNumber" class="form-control" />
+                    <span asp-validation-for="IdNumber" class="text-danger"></span>
+                </div>*@
+
+            <div class="form-group">
+                <label class="title">團隊圖片</label>
+                @*<label asp-for="ImgTeam" class="control-label"></label>*@
+                <input type="file" name="name" value="" onchange="Selected(event,2)" />
+                <input asp-for="ImgTeam" id="case2" class="form-control" />
+                <span asp-validation-for="ImgTeam" class="text-danger"></span>
+                <small class="form-text text-muted">
+                    此圖片為您目前的會員圖片，建議更新為適合此專案的個人或團隊照片。
+                </small>
+            </div>
+            <div class="form-group">
+                <label class="title">顯示名稱</label>
+                @*<label asp-for="DisplayName" class="control-label"></label>*@
+                <input asp-for="DisplayName" class="form-control" />
+                <span asp-validation-for="DisplayName" class="text-danger"></span>
+                <small class="form-text text-muted">
+                    顯示名稱將會被瀏覽者視為此計畫的執行團隊。此名稱為您目前的會員名稱，建議更新為適合此專案的個人或團隊名稱。
+                </small>
+            </div>
+            <div class="form-group">
+                <label class="title">自我介紹</label>
+                @*<label asp-for="Resume" class="control-label"></label>*@
+                <input asp-for="Resume" class="form-control" />
+                <span asp-validation-for="Resume" class="text-danger"></span>
+                <small class="form-text text-muted">
+                    自我介紹將會被瀏覽者視為此計畫執行團隊的簡介。此區塊為您目前的會員介紹，建議更新為適合此專案的個人或團隊介紹。
+                </small>
+            </div>
+            <div class="form-group">
+                <label class="title">粉絲專業</label>
+                @*<label asp-for="FanPage" class="control-label"></label>*@
+                <input asp-for="FanPage" class="form-control" />
+                <span asp-validation-for="FanPage" class="text-danger"></span>
+                <small class="form-text text-muted">
+                    如果有和計畫相關的粉絲專頁，請直接貼上完整網址。
+                </small>
+            </div>
+            <div class="form-group">
+                <label class="title">專案網站</label>
+                @*<label asp-for="Web" class="control-label"></label>*@
+                <input asp-for="Web" class="form-control" />
+                <span asp-validation-for="Web" class="text-danger"></span>
+                <small class="form-text text-muted">
+                    如果有和計畫相關的粉絲專頁，請直接貼上完整網址。
+                </small>
+            </div>
+            @*<div class="form-group">
+                    <label asp-for="CurrentAmount" class="control-label"></label>
+                    <input asp-for="CurrentAmount" class="form-control" />
+                    <span asp-validation-for="CurrentAmount" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <input type="submit" value="儲存" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<script>
+    const id = '6bf0ca08d5201bf'; // 填入 App 的 Client ID
+    const token = '693486dcc4b44e86173cd9f4efad156d88c5f4c0'; // 填入 token
+    function Selected(e, index) {
+
+        this.file = e.target.files[0];// input type="file" 的值
+
+        this.name = this.file.name; // input的圖檔名稱
+
+        this.size = Math.floor(this.file.size * 0.001) + 'KB'; // input的圖片大小
+        this.thumbnail = window.URL.createObjectURL(this.file); // input的圖片縮圖
+        this.title = this.name; // 預設 input 的圖檔名稱為圖片上傳時的圖片標題
+        let settings = {
+            async: false,
+            crossDomain: true,
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            url: 'https://api.imgur.com/3/image',
+            headers: {
+                Authorization: 'Bearer ' + token
+            },
+            mimeType: 'multipart/form-data'
+        };
+
+        let form = new FormData();
+        form.append('image', this.file);
+        //form.append('album', album); // 有要指定的相簿就加這行
+        settings.data = form;
+        $.ajax(settings).done(function (res) {
+            //console.log(res); // 可以看見上傳成功後回的值
+
+            var test = JSON.parse(res);
+            // console.log(test.data.link)
+            console.log(test.data.link);
+            // console.log(Feedback._data.form[index].file);
+
+            var box = document.getElementById(`case${index}`)
+            box.value = test.data.link;
+        })
+    }
+
+
+
+
+</script>
+

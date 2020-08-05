@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ScendMvc.Models.FeedBack>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FeedbackAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FeedbackSummary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FeedbackCover)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FeedbackType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FeedbackLimit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProposalId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeedbackAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeedbackSummary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeedbackCover)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeedbackType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeedbackLimit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProposalId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FeedbackId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FeedbackId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FeedbackId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

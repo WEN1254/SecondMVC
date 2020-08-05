@@ -1,0 +1,61 @@
+﻿@model ScendMvc.Models.FeedBack
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>FeedBack</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FeedbackAmount" class="control-label"></label>
+                <input asp-for="FeedbackAmount" class="form-control" />
+                <span asp-validation-for="FeedbackAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FeedbackSummary" class="control-label"></label>
+                <input asp-for="FeedbackSummary" class="form-control" />
+                <span asp-validation-for="FeedbackSummary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FeedbackCover" class="control-label"></label>
+                <input asp-for="FeedbackCover" class="form-control" />
+                <span asp-validation-for="FeedbackCover" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FeedbackType" class="control-label"></label>
+                <input asp-for="FeedbackType" class="form-control" />
+                <span asp-validation-for="FeedbackType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryTime" class="control-label"></label>
+                <input asp-for="DeliveryTime" class="form-control" />
+                <span asp-validation-for="DeliveryTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FeedbackLimit" class="control-label"></label>
+                <input asp-for="FeedbackLimit" class="form-control" />
+                <span asp-validation-for="FeedbackLimit" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="FeedbackId" />
+            <div class="form-group">
+                <label asp-for="ProposalId" class="control-label"></label>
+                <input asp-for="ProposalId" class="form-control" />
+                <span asp-validation-for="ProposalId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
