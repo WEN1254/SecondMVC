@@ -13,7 +13,7 @@ namespace ScendMvc.Models
         public DateTime? TimeStart { get; set; }
         public DateTime? TimeEnd { get; set; }
         public string Category { get; set; }
-        public decimal? Target { get; set; }
+        public int? Target { get; set; }
         public string Video { get; set; }
         public string Content { get; set; }
         public string Principal { get; set; }
@@ -25,6 +25,6 @@ namespace ScendMvc.Models
         public string Resume { get; set; }
         public string FanPage { get; set; }
         public string Web { get; set; }
-        public decimal? CurrentAmount { get; set; }
+        public int? CurrentAmount { get; set; }
     }
 }

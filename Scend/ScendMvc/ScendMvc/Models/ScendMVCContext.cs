@@ -179,7 +179,9 @@ namespace ScendMvc.Models
 
             modelBuilder.Entity<Proposal>(entity =>
             {
-                entity.Property(e => e.ProposalId).HasColumnName("Proposal_ID");
+                entity.Property(e => e.ProposalId)
+                    .HasColumnName("Proposal_ID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Category)
                     .HasColumnName("category")
@@ -191,9 +193,7 @@ namespace ScendMvc.Models
                     .HasMaxLength(50)
                     .IsFixedLength();
 
-                entity.Property(e => e.CurrentAmount)
-                    .HasColumnName("Current_Amount")
-                    .HasColumnType("money");
+                entity.Property(e => e.CurrentAmount).HasColumnName("Current_Amount");
 
                 entity.Property(e => e.DisplayName)
                     .HasColumnName("display_name")
@@ -240,9 +240,7 @@ namespace ScendMvc.Models
                     .HasMaxLength(50)
                     .IsFixedLength();
 
-                entity.Property(e => e.Target)
-                    .HasColumnName("target")
-                    .HasColumnType("money");
+                entity.Property(e => e.Target).HasColumnName("target");
 
                 entity.Property(e => e.Tel)
                     .HasColumnName("tel")
@@ -269,7 +267,7 @@ namespace ScendMvc.Models
 
                 entity.Property(e => e.Web)
                     .HasColumnName("web")
-                    .HasMaxLength(10)
+                    .HasMaxLength(60)
                     .IsFixedLength();
             });
 
