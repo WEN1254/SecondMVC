@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+@*<h1>Details</h1>
 
 <div>
     <h4>Proposal</h4>
@@ -135,10 +135,12 @@
 <div>
     <a asp-action="Edit" asp-route-id="@Model.ProposalId">Edit</a> |
     <a asp-action="Index">Back to List</a>
-</div>
+</div>*@
 @*<h1 id="ProductId">@Model.ProductId</h1>*@
 
+<h1 id="max"> @Html.DisplayFor(model => model.Target)</h1>
 
+<h1 id="value"> @Html.DisplayFor(model => model.CurrentAmount)</h1>
 
 <div class=" container-roll col-11 mx-auto   " id="block1">
     <div class="d-flex col-12 col-md-10 flex-wrap mx-auto" id="asd">
@@ -185,7 +187,7 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, pariatur?</p>
                 <div class="d-flex mx-auto ">
 
-                    <button class="col-3"> <a >支持</a> </button>
+                    <button class="col-3"> <a asp-action="Edit" asp-route-id="@Model.ProposalId">支持</a> </button>
                     <button class="col-3">跟隨</button>
                     <div class="col-4 d-flex   "><a href=""><i class="fab fa-facebook-square" id="icon"></i></a></div>
                 </div>
@@ -207,6 +209,14 @@
 
 @section Scripts {
     <script>
+        var max = document.getElementById("max");
+        var Productmax = parseInt(max.innerText);
+
+
+
+        var value = document.getElementById("value");
+        var Productvalue = parseInt(value.innerText);
+
 
 
 
@@ -216,38 +226,18 @@
         var test = new Vue({
             el: '#block1',
             data: {
-                max: 10000,
-                value: 0
+                max: Productmax,
+                value: Productvalue
             },
-            created: function () {
-                $.ajax({
-                    url: "api/Proposals/1512",
-                    type: 'GET',
-                    data: '',
-                    async: true,
-                    success: function (response) {
-                        console.log(response.currentAmount);
 
-
-
-                        GetResponse(response.currentAmount);
-
-
-                    }
-                });
-                function GetResponse(input) {
-                    this.test.value = input;
-                };
-
-            }
         });
     </script>
 }
 
-@*@section TopCss {
-    <style>
-        #ProductId {
-            display: none;
-        }
-    </style>
-}*@
+@section TopCss {
+        <style>
+            #ProductId,#max,#value {
+                display: none;
+            }
+        </style>
+    }

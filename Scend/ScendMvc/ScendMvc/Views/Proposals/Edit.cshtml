@@ -13,47 +13,47 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ProposalId" />
-            <div class="form-group">
+            <div id="IsFavorite" class="form-group">
                 <label asp-for="IsFavorite" class="control-label"></label>
                 <input asp-for="IsFavorite" class="form-control" />
                 <span asp-validation-for="IsFavorite" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div id="Title" class="form-group">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div id="Summary" class="form-group">
                 <label asp-for="Summary" class="control-label"></label>
                 <input asp-for="Summary" class="form-control" />
                 <span asp-validation-for="Summary" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div id="ProjectCover" class="form-group">
                 <label asp-for="ProjectCover" class="control-label"></label>
                 <input asp-for="ProjectCover" class="form-control" />
                 <span asp-validation-for="ProjectCover" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div id="TimeStart" class="form-group">
                 <label asp-for="TimeStart" class="control-label"></label>
                 <input asp-for="TimeStart" class="form-control" />
                 <span asp-validation-for="TimeStart" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div id="TimeEnd"  class="form-group">
                 <label asp-for="TimeEnd" class="control-label"></label>
                 <input asp-for="TimeEnd" class="form-control" />
                 <span asp-validation-for="TimeEnd" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div  id="Category" class="form-group">
                 <label asp-for="Category" class="control-label"></label>
                 <input asp-for="Category" class="form-control" />
                 <span asp-validation-for="Category" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div  id="Target"class="form-group">
                 <label asp-for="Target" class="control-label"></label>
                 <input asp-for="Target" class="form-control" />
                 <span asp-validation-for="Target" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div  id="Video"class="form-group">
                 <label asp-for="Video" class="control-label"></label>
                 <input asp-for="Video" class="form-control" />
                 <span asp-validation-for="Video" class="text-danger"></span>
@@ -124,3 +124,9 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+@section TopCss {
+    <style>
+
+    </style>
+
+}

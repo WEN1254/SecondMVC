@@ -9,7 +9,7 @@ using ScendMvc.Models;
 
 namespace ScendMvc.ApiController
 {
-    [Route("Proposals/Details/api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ProposalsController : ControllerBase
     {
@@ -80,7 +80,21 @@ namespace ScendMvc.ApiController
         public async Task<ActionResult<Proposal>> PostProposal(Proposal proposal)
         {
             _context.Proposal.Add(proposal);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (ProposalExists(proposal.ProposalId))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
             return CreatedAtAction("GetProposal", new { id = proposal.ProposalId }, proposal);
         }
