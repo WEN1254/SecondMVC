@@ -195,48 +195,67 @@
         </div>
 
     </div>
-    <div class="col-10 mx-auto" id="info">
-        <b-tabs active-nav-item-class="font-weight-bold text-uppercase text-danger"
-                active-tab-class="font-weight-bold text-success"
-                content-class="mt-3">
-            <b-tab title="STORY" active><p>I'm the first tab</p></b-tab>
-            <b-tab title="FAQ"><p>I'm the second tab</p></b-tab>
-            <b-tab title="COMMENTS"><p>I'm a disabled tab!</p></b-tab>
+    @*<div class="col-10 mx-auto" id="info">
+                <b-tabs active-nav-item-class="font-weight-bold text-uppercase text-danger"
+                        active-tab-class="font-weight-bold text-success"
+                        content-class="mt-3">
+
+                    <b-tab title="STORY" >
+                        <iframe width="560" height="315" src="@Model.Video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </b-tab>
+                    <b-tab title="FAQ" active>
+                        <iframe src="https://i.simmer.io/@@matlab6987/123" style="width:960px;height:600px;border:0"></iframe>
+                    </b-tab>
+                    <b-tab title="COMMENTS" ><p>I'm a disabled tab!</p></b-tab>
+                </b-tabs>
+            </div>
+        </div>*@
+
+    <div>
+        <b-tabs content-class="mt-3" fill>
+            <b-tab title="STORY" active>
+                <h1>@Model.Game_show</h1>
+                <iframe src="@Model.Game_show" style="width:960px;height:600px;border:0"></iframe>
+            </b-tab>
+            <b-tab title="FAQ">
+                <iframe width="560" height="315" src="@Model.Video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </b-tab>
+            <b-tab title="COMMENTS"><p>I'm the tab with the very, very long title</p></b-tab>
         </b-tabs>
     </div>
-</div>
+    
 
 
-@section Scripts {
-    <script>
-        var max = document.getElementById("max");
-        var Productmax = parseInt(max.innerText);
-
-
-
-        var value = document.getElementById("value");
-        var Productvalue = parseInt(value.innerText);
+    @section Scripts {
+        <script>
+            var max = document.getElementById("max");
+            var Productmax = parseInt(max.innerText);
 
 
 
+            var value = document.getElementById("value");
+            var Productvalue = parseInt(value.innerText);
 
 
-        //var Id = document.getElementById("ProductId");
-        //var ProductId = parseInt(Id.innerText)
-        var test = new Vue({
-            el: '#block1',
-            data: {
-                max: Productmax,
-                value: Productvalue
-            },
 
-        });
-    </script>
-}
 
-@section TopCss {
+
+            //var Id = document.getElementById("ProductId");
+            //var ProductId = parseInt(Id.innerText)
+            var test = new Vue({
+                el: '#block1',
+                data: {
+                    max: Productmax,
+                    value: Productvalue
+                },
+
+            });
+        </script>
+    }
+
+    @section TopCss {
         <style>
-            #ProductId,#max,#value {
+            #ProductId, #max, #value {
                 display: none;
             }
         </style>

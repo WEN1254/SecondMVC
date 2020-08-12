@@ -9,7 +9,7 @@ using ScendMvc.Models;
 
 namespace ScendMvc.ApiController
 {
-    [Route("api/[controller]")]
+    [Route("Proposals/Details/api/[controller]")]
     [ApiController]
     public class ProposalsController : ControllerBase
     {

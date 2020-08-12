@@ -96,6 +96,8 @@ namespace ScendMvc.Controllers
             {
                 try
                 {
+
+
                     _context.Update(proposal);
                     await _context.SaveChangesAsync();
                 }
