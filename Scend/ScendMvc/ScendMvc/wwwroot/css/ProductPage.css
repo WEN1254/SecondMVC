@@ -31,3 +31,70 @@
         flex-wrap: wrap;
     }
 }
+
+
+
+h1 {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#content {
+    width: 710px;
+    margin: 20px auto;
+    position: relative;
+}
+
+#canvas {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.form-item {
+    display: flex;
+    color: #666;
+    margin: 10px auto;
+    align-content: center;
+    justify-content: center;
+}
+
+.form-item .input {
+        font-size: 14px;
+        border: 1px solid #d9d9d9;
+        outline: none;
+        padding: 5px 10px;
+}
+
+.form-item .name {
+        margin-left: 10px;
+}
+
+.form-item .btn {
+        outline: none;
+        padding: 5px 10px;
+        text-align: center;
+        border: 1px solid #0d90ee;
+        background-color: #0d90ee;
+        color: #fff;
+        border-radius: 3px;
+        margin-left: 10px;
+        cursor: pointer;
+}
+#chat_viedo {
+    display: flex;
+}
+
+.video_section video {
+    /*height: 50vh;*/
+}
+
+.chat_section .chat #messagesList {
+    height: 33vh;
+    overflow: auto;
+}
+
+.chat_section .chat #send {
+    /*height: 15vh;*/
+}

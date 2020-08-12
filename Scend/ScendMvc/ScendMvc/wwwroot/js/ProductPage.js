@@ -2,7 +2,7 @@
 
 
 var test = new Vue({
-    el: '#block1',
+    el: '#ProductPage',
     data: {
         max: 50,
         value: 33,

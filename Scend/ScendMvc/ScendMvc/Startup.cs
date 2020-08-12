@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ScendMvc.Models;
+using SignalRChat.Hubs;
+
 
 namespace ScendMvc
 {
@@ -37,6 +39,7 @@ namespace ScendMvc
             services.AddRazorPages();
             services.AddDbContext<ScendMVCContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +70,7 @@ namespace ScendMvc
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+                endpoints.MapHub<ChatHub>("/chathub");
             });
 
         }
