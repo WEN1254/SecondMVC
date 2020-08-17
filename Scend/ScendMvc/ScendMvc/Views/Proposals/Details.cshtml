@@ -9,6 +9,8 @@
 
 <h1 id="value"> @Html.DisplayFor(model => model.CurrentAmount)</h1>
 
+<h1 id="poposal_id"> @Html.DisplayFor(model => model.ProposalId)</h1>
+
 
 
 
@@ -67,7 +69,7 @@
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, pariatur?</p>
                             <div class="d-flex mx-auto ">
 
-                                <button class="col-3"><a asp-action="Edit" asp-route-id="@Model.ProposalId">支持</a></button>
+                                <button class="col-3"><a asp-action="Edit" asp-route-id="@Model.ProposalId" onclick="Save()">支持</a></button>
                                 <button class="col-3">跟隨</button>
                                 <div class="col-4 d-flex   "><a href=""><i class="fab fa-facebook-square" id="icon"></i></a></div>
                             </div>
@@ -107,6 +109,16 @@
 
     <script src="~/js/barrage.js"></script>
     <script>
+
+        function Save() {
+
+            var Id = document.getElementById("poposal_id");
+            var ProductId = parseInt(Id.innerText);
+            var Web_URL = `/Proposals/Details/${ProductId}`;
+
+            localStorage.setItem("URL",`${Web_URL}`);
+
+        }
         var max = document.getElementById("max");
         var Productmax = parseInt(max.innerText);
 
@@ -119,8 +131,7 @@
 
 
 
-        //var Id = document.getElementById("ProductId");
-        //var ProductId = parseInt(Id.innerText)
+       
         var test = new Vue({
             el: '#ProductPage',
             data: {
@@ -245,7 +256,7 @@
     <link href="~/css/ProductPage.css" rel="stylesheet" />
     <style>
 
-        #ProductId, #max, #value {
+        #ProductId, #max, #value,#poposal_id {
             display: none;
         }
     </style>
