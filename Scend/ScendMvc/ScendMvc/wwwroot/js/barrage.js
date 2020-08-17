@@ -6,7 +6,7 @@ const defaultOptions = {
     data: []
 }
 class Barrage {
-    constructor (obj, ctx) {
+    constructor(obj, ctx) {
         this.value = obj.value; // 弹幕内容
         this.time = obj.time;   // 弹幕时间
         this.obj = obj;
@@ -16,7 +16,7 @@ class Barrage {
         // 渲染状态位，默认没有渲染过
         this.flag = false;
     }
-    init () {
+    init() {
         // 弹幕属性
         this.opacity = this.obj.opacity || this.ctx.opacity;
         this.color = this.obj.color || this.ctx.color;
@@ -37,15 +37,15 @@ class Barrage {
         this.pos_x = this.ctx.canvas.width;
         this.pos_y = this.ctx.canvas.height * Math.random();
         // 保证弹幕在 canvas 内部
-        if ( this.pos_y < this.fontSize ) {
+        if (this.pos_y < this.fontSize) {
             this.pos_y = this.fontSize;
         }
-        if ( this.pos_y > this.ctx.canvas.height - this.fontSize ) {
+        if (this.pos_y > this.ctx.canvas.height - this.fontSize) {
             this.pos_y = this.ctx.canvas.height - this.fontSize
         }
     }
     // 弹幕渲染
-    render () {
+    render() {
         this.ctx.context.globalAlpha = this.opacity;
         this.ctx.context.font = this.fontSize + 'px "Microsoft YaHei"';
         this.ctx.context.fillStyle = this.color;
@@ -53,14 +53,14 @@ class Barrage {
     }
 }
 class CanvasBarrage {
-    constructor (canvas, video, options = {}) {
+    constructor(canvas, video, options = {}) {
         // 判断
-        if ( !canvas || !video ) return;
+        if (!canvas || !video) return;
         this.canvas = canvas;
         this.video = video;
         // 设置 canvas 的宽高
         this.canvas.width = video.clientWidth;
-        this.canvas.height = video.clientHeight;
+        this.canvas.height = video.clientHeight - 50;
         // 绘图上下文
         this.context = canvas.getContext('2d');
         // 对象合并，挂载到实例上
@@ -73,54 +73,45 @@ class CanvasBarrage {
         this.render()
     }
     // 渲染弹幕
-    render () {
+    render() {
         // 清空画布
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         // 绘制弹幕
         this.renderBarrage();
         // 没有暂停，就继续渲染
-        if ( this.isPaused === false ) {
-            window.requestAnimationFrame(this.render.bind(this))
-        }
+
+        window.requestAnimationFrame(this.render.bind(this))
+
     }
     // 绘制弹幕
-    renderBarrage () {
+    renderBarrage() {
         // 视频时间
-        const currentTime = this.video.currentTime;
+
         // 渲染弹幕，必须判断弹幕时间与视频时间是否匹配
         this.barrages.forEach(barrage => {
-            if ( !barrage.flag && currentTime >= barrage.time ) {
+            if (!barrage.flag) {
                 // 初始化弹幕
-                if ( !barrage.isInited ) {
+                if (!barrage.isInited) {
                     barrage.init();
                 }
                 // 弹幕移动
                 barrage.pos_x -= barrage.speed;
                 barrage.render();
                 // 停止
-                if ( barrage.pos_x <= barrage.width * -1 ) {
+                if (barrage.pos_x <= barrage.width * -1) {
                     barrage.flag = true;
                 }
             }
         })
     }
     // 添加弹幕
-    addBarrage (obj) {
+    addBarrage(obj) {
         this.barrages.push(new Barrage(obj, this))
     }
     // 重置
-    reset () {
+    reset() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        const currentTime = this.video.currentTime;
-        this.barrages.forEach(barrage => {
-            barrage.flag = false;
-            // 重新初始化
-            if ( currentTime <= barrage.time ) {
-                barrage.isInited = false;
-            } else {
-                // 其他弹幕不渲染
-                barrage.flag = true;
-            }
-        })
+
+
     }
 }

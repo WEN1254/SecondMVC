@@ -47,9 +47,9 @@ h1 {
 
 #canvas {
     position: absolute;
-    right: 0;
+    right: 50;
     top: 0;
-    background-color: rgba(0,0,0,0.3);
+   
 }
 
 .form-item {

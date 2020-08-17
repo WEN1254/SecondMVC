@@ -20,10 +20,9 @@
         <section class="col-12 col-lg-8 video_section" id="video_section">
             <div id="content">
                 <canvas id="canvas"></canvas>
-                <video id="video" autoplay muted width="710" height="400" controls>
-                    <source src="~/video/仁王 OP.mp4" type="video/mp4">
-                </video>
-            </div>
+                <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/UP0D8X_J1II" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+ </div>
         </section>
 
         @*=================聊天室==============================*@
@@ -45,7 +44,7 @@
 
                     <div class="mt-2">
                         <span class="name">顏色：</span>
-                        <input type="color" placeholder="选择颜色" value="#000" id="colorInput">
+                        <input type="color" placeholder="選擇顏色" value="#000" id="colorInput">
                         <span class="name">文字大小：</span>
                         <input type="range" min="20" max="40" value="20" id="rangeInput">
                     </div>
