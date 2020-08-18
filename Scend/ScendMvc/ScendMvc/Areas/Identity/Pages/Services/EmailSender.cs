@@ -28,7 +28,7 @@ namespace ScendMvc.Areas.Identity.Pages.Services
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("azure_4434184ba409b34011904deb386f622a@azure.com", Options.SendGridUser),
+                From = new EmailAddress("ycpss90289@gmail.com", Options.SendGridUser),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
