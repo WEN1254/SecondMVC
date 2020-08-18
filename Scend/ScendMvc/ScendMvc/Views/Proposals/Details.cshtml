@@ -20,7 +20,7 @@
         <section class="col-12 col-lg-8 video_section" id="video_section">
             <div id="content">
                 <canvas id="canvas"></canvas>
-                <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/UP0D8X_J1II" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe style="z-index:-2" id="video" width="560" height="315" src="https://www.youtube.com/embed/UP0D8X_J1II" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
  </div>
         </section>
@@ -68,7 +68,7 @@
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, pariatur?</p>
                             <div class="d-flex mx-auto ">
 
-                                <button class="col-3"><a asp-action="Edit" asp-route-id="@Model.ProposalId" onclick="Save()">支持</a></button>
+                                <button  onclick="Save()"class="col-3">支持</button>
                                 <button class="col-3">跟隨</button>
                                 <div class="col-4 d-flex   "><a href=""><i class="fab fa-facebook-square" id="icon"></i></a></div>
                             </div>
@@ -95,7 +95,9 @@
 
                     </article>
                 </b-tab>
-                <b-tab title="FAQ"><p>I'm the second tab</p></b-tab>
+                <b-tab title="FAQ">
+                    <iframe src="@Model.Game_show" style="width:960px;height:600px;border:0"></iframe>
+                </b-tab>
                 <b-tab title="COMMENTS"><p>I'm a disabled tab!</p></b-tab>
             </b-tabs>
         </div>
@@ -115,8 +117,8 @@
             var ProductId = parseInt(Id.innerText);
             var Web_URL = `/Proposals/Details/${ProductId}`;
 
-            localStorage.setItem("URL",`${Web_URL}`);
-
+            localStorage.setItem("URL", `${Web_URL}`);
+            location.href = `/Proposals/Edit/${ProductId}`;
         }
         var max = document.getElementById("max");
         var Productmax = parseInt(max.innerText);

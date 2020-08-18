@@ -29,6 +29,7 @@ class Barrage {
         span.innerHTML = this.value;
         span.style.font = this.fontSize + 'px "Microsoft YaHei"';
         span.style.position = 'absolute';
+        span.style.zIndex = '5';
         document.body.appendChild(span);
         // 弹幕宽度
         this.width = span.clientWidth;
@@ -61,6 +62,7 @@ class CanvasBarrage {
         // 设置 canvas 的宽高
         this.canvas.width = video.clientWidth;
         this.canvas.height = video.clientHeight - 50;
+        this.canvas.style.zIndex = -1;
         // 绘图上下文
         this.context = canvas.getContext('2d');
         // 对象合并，挂载到实例上
