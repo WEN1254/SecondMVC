@@ -48,6 +48,16 @@ namespace ScendMvc
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);  
             services.AddRazorPages();
+            services.AddAuthentication().AddGoogle(googleOptions =>
+            {
+                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+                googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            })
+            .AddFacebook(Facebookoptions =>
+            {
+                Facebookoptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                Facebookoptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
