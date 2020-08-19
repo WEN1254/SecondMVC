@@ -1,18 +1,17 @@
 ﻿@model ScendMvc.Models.Proposal
-
 @{
     ViewData["Title"] = "Edit";
 }
+<h1>支持</h1>
 
-<h1>Edit</h1>
-
-<h4>Proposal</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ProposalId" />
+            <input id="input1" type="text" class="text" value=0>
+
             <div id="IsFavorite" class="form-group">
                 <label asp-for="IsFavorite" class="control-label"></label>
                 <input asp-for="IsFavorite" class="form-control" />
@@ -38,95 +37,120 @@
                 <input asp-for="TimeStart" class="form-control" />
                 <span asp-validation-for="TimeStart" class="text-danger"></span>
             </div>
-            <div id="TimeEnd"  class="form-group">
+            <div id="TimeEnd" class="form-group">
                 <label asp-for="TimeEnd" class="control-label"></label>
                 <input asp-for="TimeEnd" class="form-control" />
                 <span asp-validation-for="TimeEnd" class="text-danger"></span>
             </div>
-            <div  id="Category" class="form-group">
+            <div id="Category" class="form-group">
                 <label asp-for="Category" class="control-label"></label>
                 <input asp-for="Category" class="form-control" />
                 <span asp-validation-for="Category" class="text-danger"></span>
             </div>
-            <div  id="Target"class="form-group">
+            <div id="Target" class="form-group">
                 <label asp-for="Target" class="control-label"></label>
                 <input asp-for="Target" class="form-control" />
                 <span asp-validation-for="Target" class="text-danger"></span>
             </div>
-            <div  id="Video"class="form-group">
+            <div id="Video" class="form-group">
                 <label asp-for="Video" class="control-label"></label>
                 <input asp-for="Video" class="form-control" />
                 <span asp-validation-for="Video" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div id="Content" class="form-group">
                 <label asp-for="Content" class="control-label"></label>
                 <input asp-for="Content" class="form-control" />
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div id="Principal" class="form-group">
                 <label asp-for="Principal" class="control-label"></label>
                 <input asp-for="Principal" class="form-control" />
                 <span asp-validation-for="Principal" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div id="Email" class="form-group">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div id="Tel" class="form-group">
                 <label asp-for="Tel" class="control-label"></label>
                 <input asp-for="Tel" class="form-control" />
                 <span asp-validation-for="Tel" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div id="Identity" class="form-group">
                 <label asp-for="Identity" class="control-label"></label>
                 <input asp-for="Identity" class="form-control" />
                 <span asp-validation-for="Identity" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div id="ImgTeam" class="form-group">
                 <label asp-for="ImgTeam" class="control-label"></label>
                 <input asp-for="ImgTeam" class="form-control" />
                 <span asp-validation-for="ImgTeam" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div id="DisplayName" class="form-group">
                 <label asp-for="DisplayName" class="control-label"></label>
                 <input asp-for="DisplayName" class="form-control" />
                 <span asp-validation-for="DisplayName" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div id="Resume" class="form-group">
                 <label asp-for="Resume" class="control-label"></label>
                 <input asp-for="Resume" class="form-control" />
                 <span asp-validation-for="Resume" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div id="FanPage" class="form-group">
                 <label asp-for="FanPage" class="control-label"></label>
                 <input asp-for="FanPage" class="form-control" />
                 <span asp-validation-for="FanPage" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div id="Web" class="form-group">
                 <label asp-for="Web" class="control-label"></label>
                 <input asp-for="Web" class="form-control" />
                 <span asp-validation-for="Web" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div id="CurrentAmount" class="form-group">
                 <label asp-for="CurrentAmount" class="control-label"></label>
-                <input asp-for="CurrentAmount" class="form-control" />
+                <input id="input2" asp-for="CurrentAmount" class="form-control" />
                 <span asp-validation-for="CurrentAmount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input onclick="Add()" type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section TopCss {
     <style>
 
+        #CurrentAmount, #Web, #FanPage, #Resume, #DisplayName, #Identity, #ImgTeam, #Tel, #Email, #Principal, #Content, #Video, #Target, #Category, #TimeEnd, #TimeStart, #ProjectCover, #Summary, #Title, #IsFavorite {
+            display: none;
+        }
     </style>
+}
+@section Scripts {
+    <script>function Add() {
 
+            var input1 = document.getElementById("input1");
+            var input1_num = parseInt(input1.value);
+
+            var input2 = document.getElementById("input2");
+            var input2_num = parseInt(input2.value);
+
+
+            if (input1.value == null) {
+                input2_num += 0;
+                input2.value = input2_num;
+
+            }
+            else {
+
+                input2_num += input1_num;
+            input2.value = input2_num;
+            }
+
+
+
+
+
+        }</script>
 }
