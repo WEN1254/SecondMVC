@@ -20,7 +20,7 @@
         <section class="col-12 col-lg-8 video_section" id="video_section">
             <div id="content">
                 <canvas id="canvas"></canvas>
-                <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/UP0D8X_J1II" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/h7u4AOqVUJA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
             </div>
         </section>
@@ -96,7 +96,7 @@
                     </article>
                 </b-tab>
                 <b-tab title="FAQ">
-                    @*<iframe src="@Model.Game_show" style="width:960px;height:600px;border:0"></iframe>*@
+                    <iframe src="@Model.Game_show" style="width:960px;height:600px;border:0"></iframe>
                 </b-tab>
                 <b-tab title="COMMENTS"><p>I'm a disabled tab!</p></b-tab>
             </b-tabs>
@@ -161,8 +161,13 @@
         // 全頻道訊息
         document.getElementById('submitAllBtn').addEventListener('click', function () {
             var user = document.getElementById("name").value;
-            var message = document.getElementById("msg").value;
+            var message = JSON.stringify({
+                mes: document.getElementById("msg").value, clo: $('#colorInput').value
+                , size: $('#rangeInput').value
+            });
+
             connection.invoke("SendMessage", user, message).catch(function (err) {
+
                 return console.error(err.toString());
             });
 
@@ -170,10 +175,14 @@
 
         // 全頻道訊息傳送訊息事件
         connection.on("ReceiveMessage", function (user, message) {
-            var msg = `[全頻道訊息]${user}：${message}`;
+
+            var messa = JSON.parse(message);
+            var msg = `[全頻道訊息]${user}：${messa.mes}`;
             var li = document.createElement("li");
+
             li.textContent = msg;
             document.getElementById("messagesList").appendChild(li);
+
             Jump(message, false);
             scroll_bottom();
         });
@@ -182,6 +191,7 @@
         document.getElementById("addGroupBtn").addEventListener("click", function (event) {
             var user = document.getElementById("name").value;
             var group = document.getElementById("group").value;
+
             connection.invoke("AddGroup", group, user).catch(function (err) {
                 return console.error(err.toString());
             });
@@ -190,7 +200,8 @@
 
         // 接收加入群組訊息
         connection.on("RecAddGroupMsg", function (message) {
-            var msg = message;
+            var messa = JSON.parse(message);
+            var msg = `[全頻道訊息]${user}：${messa.mes}`;
             var li = document.createElement("li");
             li.textContent = msg;
             document.getElementById("messagesList").appendChild(li);
@@ -200,7 +211,10 @@
         document.getElementById("submitGroupBtn").addEventListener("click", function (e) {
             var user = document.getElementById("name").value;
             var group = document.getElementById("group").value;
-            var message = document.getElementById("msg").value;
+            var message = JSON.stringify({
+                mes: document.getElementById("msg").value, clo: $('#colorInput').value
+                , size: $('#rangeInput').value
+            });
             connection.invoke("SendMessageToGroup", group, user, message).catch(function (err) {
                 return console.error(err.toString());
             });
@@ -210,8 +224,11 @@
         // 群組訊息接收事件
         connection.on("ReceiveGroupMessage", function (groupName, user, message) {
             console.log(user);
-            var msg = `[群組訊息(${groupName})]${user}：${message}`;
+            var messa = JSON.parse(message);
+            var msg = `[群組訊息(${groupName})]${user}：${messa.mes}`;
             var li = document.createElement("li");
+
+
             li.textContent = msg;
             document.getElementById("messagesList").appendChild(li);
             Jump(message, false);
@@ -236,11 +253,11 @@
         }, false)
         // 添加彈幕
         function Jump(x) {
-
-            const value = x,
+            const mesa = JSON.parse(x);
+            const value = mesa.mes,
                 time = video.currentTime,
-                color = $('#colorInput').value,
-                fontSize = $('#rangeInput').value;
+                color = mesa.clo,
+                fontSize = mesa.size;
             const obj = { value, time, color, fontSize };
             //debugger;
             canvasBarrage.addBarrage(obj);
@@ -251,6 +268,7 @@
             objDiv.scrollTop = objDiv.scrollHeight + 5;
         }
     </script>
+
 }
 
 @section TopCss {

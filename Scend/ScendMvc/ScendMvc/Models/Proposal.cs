@@ -26,5 +26,8 @@ namespace ScendMvc.Models
         public string FanPage { get; set; }
         public string Web { get; set; }
         public int? CurrentAmount { get; set; }
+        public string Game_show { get; set; }
+
+        
     }
 }
