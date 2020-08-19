@@ -25,11 +25,12 @@
     @*CKEditor文字編輯連結*@
     <script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/classic/ckeditor.js"></script>
 
+    <!-- Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
+    <!-- Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 
-    <link href="~/css/Home.css" rel="stylesheet" />
-    <link href="~/css/Proposal.css" rel="stylesheet" />
-  
-    @RenderSection("TopCss", required: false)
+    @RenderSection("topCSS", required: false)
 </head>
 <body>
 
@@ -44,6 +45,8 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+    @RenderSection("endJS", required: false)
+
 
     @*<script src="~/js/ProductPage.js"></script>*@
 </body>

@@ -9,10 +9,10 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @*<div class="form-group">
-                <label asp-for="ProposalId" class="control-label"></label>
-                <input asp-for="ProposalId" class="form-control" />
-                <span asp-validation-for="ProposalId" class="text-danger"></span>
-            </div>*@
+                    <label asp-for="ProposalId" class="control-label"></label>
+                    <input asp-for="ProposalId" class="form-control" />
+                    <span asp-validation-for="ProposalId" class="text-danger"></span>
+                </div>*@
             @*<div class="form-group">
                     <label asp-for="IsFavorite" class="control-label"></label>
                     <input asp-for="IsFavorite" class="form-control" />
@@ -203,50 +203,56 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-<script>
-    const id = '6bf0ca08d5201bf'; // 填入 App 的 Client ID
-    const token = '693486dcc4b44e86173cd9f4efad156d88c5f4c0'; // 填入 token
-    function Selected(e, index) {
 
-        this.file = e.target.files[0];// input type="file" 的值
+@section topCSS
+{
+    <link href="~/css/Proposal.css" rel="stylesheet" />
+}
+@section endJS {
+    <script src="~/js/Proposal.js"></script>
 
-        this.name = this.file.name; // input的圖檔名稱
+    <script>
+        const id = '6bf0ca08d5201bf'; // 填入 App 的 Client ID
+        const token = '693486dcc4b44e86173cd9f4efad156d88c5f4c0'; // 填入 token
+        function Selected(e, index) {
 
-        this.size = Math.floor(this.file.size * 0.001) + 'KB'; // input的圖片大小
-        this.thumbnail = window.URL.createObjectURL(this.file); // input的圖片縮圖
-        this.title = this.name; // 預設 input 的圖檔名稱為圖片上傳時的圖片標題
-        let settings = {
-            async: false,
-            crossDomain: true,
-            processData: false,
-            contentType: false,
-            type: 'POST',
-            url: 'https://api.imgur.com/3/image',
-            headers: {
-                Authorization: 'Bearer ' + token
-            },
-            mimeType: 'multipart/form-data'
-        };
+            this.file = e.target.files[0];// input type="file" 的值
 
-        let form = new FormData();
-        form.append('image', this.file);
-        //form.append('album', album); // 有要指定的相簿就加這行
-        settings.data = form;
-        $.ajax(settings).done(function (res) {
-            //console.log(res); // 可以看見上傳成功後回的值
+            this.name = this.file.name; // input的圖檔名稱
 
-            var test = JSON.parse(res);
-            // console.log(test.data.link)
-            console.log(test.data.link);
-            // console.log(Feedback._data.form[index].file);
+            this.size = Math.floor(this.file.size * 0.001) + 'KB'; // input的圖片大小
+            this.thumbnail = window.URL.createObjectURL(this.file); // input的圖片縮圖
+            this.title = this.name; // 預設 input 的圖檔名稱為圖片上傳時的圖片標題
+            let settings = {
+                async: false,
+                crossDomain: true,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                url: 'https://api.imgur.com/3/image',
+                headers: {
+                    Authorization: 'Bearer ' + token
+                },
+                mimeType: 'multipart/form-data'
+            };
 
-            var box = document.getElementById(`case${index}`)
-            box.value = test.data.link;
-        })
-    }
+            let form = new FormData();
+            form.append('image', this.file);
+            //form.append('album', album); // 有要指定的相簿就加這行
+            settings.data = form;
+            $.ajax(settings).done(function (res) {
+                //console.log(res); // 可以看見上傳成功後回的值
 
+                var test = JSON.parse(res);
+                // console.log(test.data.link)
+                console.log(test.data.link);
+                // console.log(Feedback._data.form[index].file);
 
+                var box = document.getElementById(`case${index}`)
+                box.value = test.data.link;
+            })
+        }
+    </script>
+}
 
-
-</script>
 

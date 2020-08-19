@@ -20,34 +20,67 @@
         <section class="col-12 col-lg-8 video_section" id="video_section">
             <div id="content">
                 <canvas id="canvas"></canvas>
-                <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/UP0D8X_J1II" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+                <iframe id="video" src="https://www.youtube.com/embed/UP0D8X_J1II" frameborder="0" 
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </section>
 
         @*=================聊天室==============================*@
         <div class="col-12 col-lg-4 chat_section">
             <div class="chat row flex-column justify-content-between">
-                <div class="d-block" id="messagesList"></div>
+                <div class="text-center chat_title">
+                    <h3>聊天室</h3>
+                </div>
+                <div class="d-block" id="messagesList">
+                </div>
                 <div class="d-block mt-1" id="send">
-                    <select id="group">
-                        <option>貓派</option>
-                        <option>狗派</option>
-                    </select>
-                    <button type="button" id="addGroupBtn" onclick="start()">加入群組</button>
-                    <br>
-                    姓名：<input id="name" type="text"><br>
-                    訊息<input id="msg" type="text">
-                    <br>
-                    <button type="Button" class="btn btn-outline-info" id="submitGroupBtn">送出給群組</button>
-                    <button type="Button" class="btn btn-outline-dark" id="submitAllBtn">送出給所有人</button>
 
-                    <div class="mt-2">
+                    <div class="input-group party">
+                        <select class="custom-select" id="group" aria-label="Example select with button addon">
+                            <option selected>選擇群組</option>
+                            <option value="貓派">貓派</option>
+                            <option value="狗派">狗派</option>
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="addGroupBtn" onclick="start()">加入群組</button>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">暱稱</span>
+                        </div>
+                        <input type="text" id="name" class="form-control" placeholder="輸入暱稱" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="msg" class="form-control" placeholder="輸入訊息" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-info" type="button" id="submitGroupBtn">群組</button>
+                            <button class="btn btn-outline-secondary" type="button" id="submitAllBtn">所有人</button>
+                        </div>
+                    </div>
+
+
+                    @*姓名：<input id="name" type="text"><br>
+        訊息：<input id="msg" type="text">
+        <br>*@
+                    @*<button type="Button" class="btn btn-outline-info" id="submitGroupBtn">送出給群組</button>
+        <button type="Button" class="btn btn-outline-dark" id="submitAllBtn">送出給所有人</button>*@
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">顏色</span>
+                    </div>
+                    <input class="form-control" type="color" placeholder="選擇顏色" value="#000" id="colorInput">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">文字大小</span>
+                    </div>
+                    <input class="form-control" type="range" min="20" max="40" value="20" id="rangeInput">
+                </div>
+                    @*<div class="mt-2">
                         <span class="name">顏色：</span>
                         <input type="color" placeholder="選擇顏色" value="#000" id="colorInput">
                         <span class="name">文字大小：</span>
                         <input type="range" min="20" max="40" value="20" id="rangeInput">
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
@@ -105,7 +138,7 @@
 
 </div>
 
-@section Scripts {
+@section endJS {
     <script src="~/js/signalr.js"></script>
 
     <script src="~/js/barrage.js"></script>
@@ -253,7 +286,7 @@
     </script>
 }
 
-@section TopCss {
+@section topCSS {
     <link href="~/css/ProductPage.css" rel="stylesheet" />
     <style>
 
