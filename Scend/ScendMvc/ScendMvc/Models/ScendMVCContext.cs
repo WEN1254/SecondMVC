@@ -30,7 +30,7 @@ namespace ScendMvc.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=scendmvc.database.windows.net;Initial Catalog=ScendMVC;Persist Security Info=True;User ID=ScendMVC;Password=Aa12345678");
             }
         }
