@@ -62,7 +62,7 @@ class CanvasBarrage {
         // 设置 ifame 的宽高
         this.ifame.width = video.clientWidth;
         this.ifame.height = video.clientHeight - 50;
-        
+
         // 绘图上下文
         this.context = ifame.getContext('2d');
         // 对象合并，挂载到实例上

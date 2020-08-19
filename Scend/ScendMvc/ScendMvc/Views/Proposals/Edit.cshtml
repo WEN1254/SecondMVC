@@ -1,11 +1,8 @@
 ﻿@model ScendMvc.Models.Proposal
-
 @{
     ViewData["Title"] = "Edit";
 }
-
 <h1>支持</h1>
-
 
 <hr />
 <div class="row">
@@ -13,9 +10,7 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ProposalId" />
-
-            <input id="input1" type="text" class="text"value=0>
-
+            <input id="input1" type="text" class="text" value=0>
 
             <div id="IsFavorite" class="form-group">
                 <label asp-for="IsFavorite" class="control-label"></label>
@@ -124,59 +119,38 @@
     </div>
 </div>
 
-
 @section TopCss {
     <style>
+
         #CurrentAmount, #Web, #FanPage, #Resume, #DisplayName, #Identity, #ImgTeam, #Tel, #Email, #Principal, #Content, #Video, #Target, #Category, #TimeEnd, #TimeStart, #ProjectCover, #Summary, #Title, #IsFavorite {
             display: none;
         }
     </style>
-
 }
-
 @section Scripts {
-    <script>
-        function Add() {
-
+    <script>function Add() {
 
             var input1 = document.getElementById("input1");
-
             var input1_num = parseInt(input1.value);
 
-            
-
             var input2 = document.getElementById("input2");
-
             var input2_num = parseInt(input2.value);
 
 
-
-            
             if (input1.value == null) {
-
                 input2_num += 0;
-
                 input2.value = input2_num;
-
 
             }
             else {
-                
-                input2_num += input1_num;
 
+                input2_num += input1_num;
             input2.value = input2_num;
             }
 
 
-            
 
 
 
-
-
-
-        }
-
-    </script>
-
+        }</script>
 }

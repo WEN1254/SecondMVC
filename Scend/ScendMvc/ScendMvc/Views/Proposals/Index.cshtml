@@ -36,54 +36,54 @@
 
 
 
-    @section Scripts {
-        <script>
+@section Scripts {
+    <script>
 
-            var local = localStorage.getItem("URL");
+        var local = localStorage.getItem("URL");
 
-            localStorage.removeItem("URL");
-            if (local != null) {
-                
-                location.href = `${local}`;
+        localStorage.removeItem("URL");
+        if (local != null) {
 
-                console.log(Location.href);
-               
+            location.href = `${local}`;
+
+            console.log(Location.href);
+
+        }
+
+
+
+        function index(x) {
+            var index = this.Fcard.items[x];
+            console.log(index);
+        }
+
+
+
+
+        $.ajax({
+            url: "Proposals/Details/api/Proposals",
+            type: 'GET',
+            data: '',
+            async: true,
+            success: function (response) {
+                console.log(response);
+
+
+
+                GetProducts(response);
+
+
             }
-            
-          
+        });
+        function GetProducts(input) {
+            this.Fcard.items = input;
+        };
 
-            function index(x) {
-                var index = this.Fcard.items[x];
-                console.log(index);
+        var Fcard = new Vue({
+            el: "#Fcard",
+            data: {
+                items: []
             }
-
-
-
-
-            $.ajax({
-                url: "Proposals/Details/api/Proposals",
-                type: 'GET',
-                data: '',
-                async: true,
-                success: function (response) {
-                    console.log(response);
-
-
-
-                    GetProducts(response);
-
-
-                }
-            });
-            function GetProducts(input) {
-                this.Fcard.items = input;
-            };
-
-            var Fcard = new Vue({
-                el: "#Fcard",
-                data: {
-                    items: []
-                }
-            })
-        </script>
-    }
+        })
+    </script>
+}

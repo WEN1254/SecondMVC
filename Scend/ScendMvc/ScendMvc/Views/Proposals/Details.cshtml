@@ -19,10 +19,10 @@
         @*=================影片==============================*@
         <section class="col-12 col-lg-8 video_section" id="video_section">
             <div id="content">
-                <canvas id="canvas" ></canvas>
-                <iframe style="z-index:1" id="video" width="560" height="315" src="https://www.youtube.com/embed/UP0D8X_J1II" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <canvas id="canvas"></canvas>
+                <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/UP0D8X_J1II" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
- </div>
+            </div>
         </section>
 
         @*=================聊天室==============================*@
@@ -68,7 +68,7 @@
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, pariatur?</p>
                             <div class="d-flex mx-auto ">
 
-                                <button  onclick="Save()"class="col-3">支持</button>
+                                <button onclick="Save()" class="col-3">支持</button>
                                 <button class="col-3">跟隨</button>
                                 <div class="col-4 d-flex   "><a href=""><i class="fab fa-facebook-square" id="icon"></i></a></div>
                             </div>
@@ -96,7 +96,7 @@
                     </article>
                 </b-tab>
                 <b-tab title="FAQ">
-                    <iframe src="@Model.Game_show" style="width:960px;height:600px;border:0"></iframe>
+                    @*<iframe src="@Model.Game_show" style="width:960px;height:600px;border:0"></iframe>*@
                 </b-tab>
                 <b-tab title="COMMENTS"><p>I'm a disabled tab!</p></b-tab>
             </b-tabs>
@@ -132,7 +132,7 @@
 
 
 
-       
+
         var test = new Vue({
             el: '#ProductPage',
             data: {
@@ -257,7 +257,7 @@
     <link href="~/css/ProductPage.css" rel="stylesheet" />
     <style>
 
-        #ProductId, #max, #value,#poposal_id {
+        #ProductId, #max, #value, #poposal_id {
             display: none;
         }
     </style>
