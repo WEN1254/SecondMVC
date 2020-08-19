@@ -82,7 +82,7 @@
             margin:.3rem auto;
         }
     .chat_section .chat #messagesList {
-        height: 33vh;
+        height: 34vh;
         overflow: auto;
         list-style-type: none;
         padding-left:1rem;
