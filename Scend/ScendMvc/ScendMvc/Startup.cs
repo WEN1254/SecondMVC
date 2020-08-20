@@ -14,7 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ScendMvc.Models;
 using SignalRChat.Hubs;
-
+using ScendMvc.Infrastructure.DB;
 
 namespace ScendMvc
 {
@@ -40,6 +40,8 @@ namespace ScendMvc
             services.AddDbContext<ScendMVCContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddSignalR();
+            services.AddDbContext<MyDbContext>(options =>
+              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

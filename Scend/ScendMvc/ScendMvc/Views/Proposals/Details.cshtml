@@ -1,17 +1,9 @@
 ﻿@model ScendMvc.Models.Proposal
-
-@{
-    ViewData["Title"] = "Details";
-}
-
+@{ ViewData["Title"] = "Details"; }
 
 <h1 id="max"> @Html.DisplayFor(model => model.Target)</h1>
-
 <h1 id="value"> @Html.DisplayFor(model => model.CurrentAmount)</h1>
-
 <h1 id="poposal_id"> @Html.DisplayFor(model => model.ProposalId)</h1>
-
-
 
 
 <div class="container" id="ProductPage">
@@ -21,10 +13,8 @@
             <div id="content">
                 <canvas id="canvas"></canvas>
                 <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/UP0D8X_J1II" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
- </div>
+            </div>
         </section>
-
         @*=================聊天室==============================*@
         <div class="col-12 col-lg-4 chat_section">
             <div class="chat row flex-column justify-content-between">
@@ -41,7 +31,6 @@
                     <br>
                     <button type="Button" class="btn btn-outline-info" id="submitGroupBtn">送出給群組</button>
                     <button type="Button" class="btn btn-outline-dark" id="submitAllBtn">送出給所有人</button>
-
                     <div class="mt-2">
                         <span class="name">顏色：</span>
                         <input type="color" placeholder="選擇顏色" value="#000" id="colorInput">
@@ -51,7 +40,6 @@
                 </div>
             </div>
         </div>
-
 
         @*=================資訊欄==============================*@
         <div class="col-12 mx-auto" id="info">
@@ -66,8 +54,7 @@
                                 <b-progress-bar :value="value" :label="`${((value / max) * 100).toFixed(2)}%`"></b-progress-bar>
                             </b-progress>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, pariatur?</p>
-                            <div class="d-flex mx-auto ">
-
+                            <div class="d-flex mx-auto">
                                 <button class="col-3"><a asp-action="Edit" asp-route-id="@Model.ProposalId" onclick="Save()">支持</a></button>
                                 <button class="col-3">跟隨</button>
                                 <div class="col-4 d-flex   "><a href=""><i class="fab fa-facebook-square" id="icon"></i></a></div>
@@ -79,7 +66,6 @@
                         <p>
                             @Model.Summary
                         </p>
-
                         <div class="d-flex" id="">
                             <div class="col-1 bg-success"></div>
                             <div>
@@ -89,10 +75,8 @@
                         </div>
                         <div class="d-flex">
                             <h3>NT${{value}}</h3>
-
                         </div>
                         <p>------------------------------------------</p>
-
                     </article>
                 </b-tab>
                 <b-tab title="FAQ"><p>I'm the second tab</p></b-tab>
@@ -100,53 +84,38 @@
             </b-tabs>
         </div>
     </div>
-
 </div>
-
 @section Scripts {
     <script src="~/js/signalr.js"></script>
-
     <script src="~/js/barrage.js"></script>
     <script>
-
         function Save() {
-
             var Id = document.getElementById("poposal_id");
             var ProductId = parseInt(Id.innerText);
             var Web_URL = `/Proposals/Details/${ProductId}`;
-
-            localStorage.setItem("URL",`${Web_URL}`);
-
+            localStorage.setItem("URL", `${Web_URL}`);
         }
         var max = document.getElementById("max");
         var Productmax = parseInt(max.innerText);
-
-
 
         var value = document.getElementById("value");
         var Productvalue = parseInt(value.innerText);
 
 
 
-
-
-       
         var test = new Vue({
             el: '#ProductPage',
             data: {
                 max: Productmax,
                 value: Productvalue
             },
-
         });
         "use strict";
-
 
         ////
         const $ = document.querySelector.bind(document);
         const canvas = $('#canvas');
         const video = $('#video');
-
 
         //上面彈幕
         // 建立SignalR連接
@@ -155,7 +124,6 @@
         connection.start().catch(function (err) {
             return console.error(err.toString());
         });
-
         // 全頻道訊息
         document.getElementById('submitAllBtn').addEventListener('click', function () {
             var user = document.getElementById("name").value;
@@ -163,9 +131,7 @@
             connection.invoke("SendMessage", user, message).catch(function (err) {
                 return console.error(err.toString());
             });
-
         })
-
         // 全頻道訊息傳送訊息事件
         connection.on("ReceiveMessage", function (user, message) {
             var msg = `[全頻道訊息]${user}：${message}`;
@@ -175,7 +141,6 @@
             Jump(message, false);
             scroll_bottom();
         });
-
         // 加入群組事件
         document.getElementById("addGroupBtn").addEventListener("click", function (event) {
             var user = document.getElementById("name").value;
@@ -185,7 +150,6 @@
             });
             event.preventDefault();
         });
-
         // 接收加入群組訊息
         connection.on("RecAddGroupMsg", function (message) {
             var msg = message;
@@ -193,7 +157,6 @@
             li.textContent = msg;
             document.getElementById("messagesList").appendChild(li);
         });
-
         // 群組訊息Button事件
         document.getElementById("submitGroupBtn").addEventListener("click", function (e) {
             var user = document.getElementById("name").value;
@@ -203,7 +166,6 @@
                 return console.error(err.toString());
             });
         });
-
 
         // 群組訊息接收事件
         connection.on("ReceiveGroupMessage", function (groupName, user, message) {
@@ -215,9 +177,7 @@
             Jump(message, false);
             scroll_bottom();
         });
-
         const canvasBarrage = new CanvasBarrage(canvas, video, {
-
         });
         // 播放
         video.addEventListener('play', function () {
@@ -234,7 +194,6 @@
         }, false)
         // 添加彈幕
         function Jump(x) {
-
             const value = x,
                 time = video.currentTime,
                 color = $('#colorInput').value,
@@ -250,15 +209,12 @@
         }
     </script>
 }
-
 @section TopCss {
-    <link href="~/css/ProductPage.css" rel="stylesheet" />
+    <link href="~/css/ProductPage.css" rel="stylesheet">
     <style>
-
-        #ProductId, #max, #value,#poposal_id {
+        #ProductId, #max, #value, #poposal_id {
             display: none;
         }
     </style>
+    
 }
-
-
