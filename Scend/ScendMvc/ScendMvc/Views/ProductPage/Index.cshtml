@@ -7,9 +7,9 @@
     <div class="row">
         @*=================影片==============================*@
         <section class="col-12 col-lg-8 video_section" id="video_section">
-            <div id="content">
+            <div id="content" class="w-100 embed-responsive embed-responsive-16by9">
                 <canvas id="canvas"></canvas>
-                <video id="video" autoplay muted width="710" height="400" controls>
+                <video class="embed-responsive-item " id="video" autoplay muted controls>
                     <source src="~/video/仁王 OP.mp4" type="video/mp4">
                 </video>
             </div>
@@ -18,23 +18,27 @@
         @*=================聊天室==============================*@
         <div class="col-12 col-lg-4 chat_section">
             <div class="chat row flex-column justify-content-between">
+                <div class="d-block text-center chat_title">
+                    <h3>聊天室</h3>
+                </div>
                 <div class="d-block" id="messagesList"></div>
                 <div class="d-block mt-1" id="send">
                     <select id="group">
                         <option>貓派</option>
                         <option>狗派</option>
                     </select>
-                    <button type="button" id="addGroupBtn" onclick="start()">加入群組</button>
-                    <br>
+                    <button class="btn btn-info" type="button" id="addGroupBtn" onclick="start()">加入群組</button>
+                    <div>
+
+                    </div>
                     姓名：<input id="name" type="text"><br>
-                    訊息<input id="msg" type="text">
-                    <br>
+                    訊息:<input id="msg" type="text">
                     <button type="Button" class="btn btn-outline-info" id="submitGroupBtn">送出給群組</button>
                     <button type="Button" class="btn btn-outline-dark" id="submitAllBtn">送出給所有人</button>
 
                     <div class="mt-2">
                         <span class="name">顏色：</span>
-                        <input type="color" placeholder="选择颜色" value="#000" id="colorInput">
+                        <input type="color" placeholder="選擇颜色" value="#000" id="colorInput">
                         <span class="name">文字大小：</span>
                         <input type="range" min="20" max="40" value="20" id="rangeInput">
                     </div>
@@ -97,13 +101,11 @@
 </div>
 
 
-@section TopCss{
-
+@section topCSS{
     <link href="~/css/ProductPage.css" rel="stylesheet" />
-
-
 }
-@section Scripts {
+
+@section endJS {
     <script src="~/js/signalr.js"></script>
     @*<script src="~/js/chat.js"></script>*@
     <script src="~/js/barrage.js"></script>

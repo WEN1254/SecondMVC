@@ -15,7 +15,7 @@ using Microsoft.Extensions.Hosting;
 using ScendMvc.Models;
 using SignalRChat.Hubs;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using ScendMvc.Areas.Identity.Pages.Servier;
+using ScendMvc.Areas.Identity.Pages.Services;
 
 namespace ScendMvc
 {
@@ -38,31 +38,17 @@ namespace ScendMvc
             {
                 options.SignIn.RequireConfirmedAccount = true;
                 options.SignIn.RequireConfirmedEmail = true;
-            })
-                .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+            }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();    
             services.AddControllersWithViews();
-            services.AddRazorPages();
+          
             services.AddDbContext<ScendMVCContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddSignalR();
 
             services.AddTransient<IEmailSender, EmailSender>();
-            services.Configure<AuthMessageSenderOptions>(Sender=> 
-            {
-                Sender.SendGridUser = "WWlombCZSgik6kuzZXJ-yw";
-                Sender.SendGridKey = "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";
-            });
-
-            services.AddAuthentication().AddGoogle(googleOptions =>
-            {
-                googleOptions.ClientId = "110616841506-3ahmg8p66sphh3v8d86vslllvd7m7a0f.apps.googleusercontent.com";
-                googleOptions.ClientSecret = "DAM2-LRoLVwE5FumOve56NI-";
-            })
-            .AddFacebook(Facebookoptions =>
-            {
-                Facebookoptions.AppId = "752358715566348";
-                Facebookoptions.AppSecret = "8c9a9ab0c144de80a09f2cfdcd286fe1";
-            });
+            services.Configure<AuthMessageSenderOptions>(Configuration);  
+            services.AddRazorPages();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

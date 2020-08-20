@@ -1,61 +1,88 @@
 ﻿@model ScendMvc.Models.Proposal
-
 @{
     ViewData["Title"] = "Details";
 }
 
-
 <h1 id="max"> @Html.DisplayFor(model => model.Target)</h1>
-
 <h1 id="value"> @Html.DisplayFor(model => model.CurrentAmount)</h1>
-
 <h1 id="poposal_id"> @Html.DisplayFor(model => model.ProposalId)</h1>
 
 
-
-
-<div class="container" id="ProductPage">
+<div class="container-fluid col-md-10" id="ProductPage">
     <div class="row">
-        @*=================影片==============================*@
-        <section class="col-12 col-lg-8 video_section" id="video_section">
-            <div id="content">
-                <canvas id="canvas"></canvas>
-                <iframe id="video" width="560" height="315" src="@Model.Video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-            </div>
-        </section>
-
-        @*=================聊天室==============================*@
-        <div class="col-12 col-lg-4 chat_section">
-            <div class="chat row flex-column justify-content-between">
-                <div class="d-block" id="messagesList"></div>
-                <div class="d-block mt-1" id="send">
-                    <select id="group">
-                        <option>貓派</option>
-                        <option>狗派</option>
-                    </select>
-                    <button type="button" id="addGroupBtn" onclick="start()">加入群組</button>
-                    <br>
-                    姓名：<input id="name" type="text"><br>
-                    訊息<input id="msg" type="text">
-                    <br>
-                    <button type="Button" class="btn btn-outline-info" id="submitGroupBtn">送出給群組</button>
-                    <button type="Button" class="btn btn-outline-dark" id="submitAllBtn">送出給所有人</button>
-
-                    <div class="mt-2">
-                        <span class="name">顏色：</span>
-                        <input type="color" placeholder="選擇顏色" value="#000" id="colorInput">
-                        <span class="name">文字大小：</span>
-                        <input type="range" min="20" max="40" value="20" id="rangeInput">
+        <div class="media w-100 row mx-auto">
+            @*=================影片==============================*@
+            <section class="col-12 col-lg-8 video_section" id="video_section">
+                <div id="content">
+                    <canvas id="canvas"></canvas>
+                    <iframe id="video" src="https://www.youtube.com/embed/UP0D8X_J1II?rel=0&autoplay=1&loop=1&showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </section>
+            @*=================聊天室==============================*@
+            <div class="col-12 col-lg-4 chat_section">
+                <div class="chat row flex-column justify-content-between">
+                    <div class="text-center chat_title">
+                        <h3>聊天室<i class="far fa-comments ml-2"></i></h3>
+                    </div>
+                    <div class="d-block" id="messagesList">
+                    </div>
+                    <div class="d-block mt-1 mx-2" id="send">
+                        <div class="input-group party">
+                            <select class="custom-select" id="group" aria-label="Example select with button addon">
+                                <option selected>選擇群組</option>
+                                <option value="貓派">貓派</option>
+                                <option value="狗派">狗派</option>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" id="addGroupBtn" onclick="start()">加入群組</button>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">暱稱</span>
+                            </div>
+                            <input type="text" id="name" class="form-control" placeholder="輸入暱稱" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="msg" class="form-control" placeholder="輸入訊息" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-info" type="button" id="submitGroupBtn">群組</button>
+                                <button class="btn btn-outline-secondary" type="button" id="submitAllBtn">所有人</button>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <select id="emoji" onchange="push()"></select>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">顏色</span>
+                            </div>
+                            <input class="form-control" type="color" placeholder="選擇顏色" value="#000" id="colorInput">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">大小</span>
+                            </div>
+                            <input class="form-control" type="range" min="20" max="40" value="20" id="rangeInput">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-
         @*=================資訊欄==============================*@
         <div class="col-12 mx-auto" id="info">
-            <b-tabs active-nav-item-class="font-weight-bold text-uppercase text-danger"
+            @*=================簡介==============================*@
+            <div class="col-12 d-flex justify-content-between">
+                <div class="d-flex">
+                    <b-avatar class="mr-3" src="https://placekitten.com/300/300" size="6rem"></b-avatar>
+                    <div class="team_info">
+                        <h3>@Model.DisplayName</h3>
+                        <p>@Model.Resume</p>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn btn-danger"><i class="far fa-heart"></i> 追隨</button>
+                </div>
+            </div>
+            @*=================分頁==============================*@
+            <b-tabs class="mt-3" active-nav-item-class="font-weight-bold text-uppercase text-danger"
                     active-tab-class="font-weight-bold text-success"
                     content-class="mt-3">
                 <b-tab title="STORY" active>
@@ -67,9 +94,7 @@
                             </b-progress>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, pariatur?</p>
                             <div class="d-flex mx-auto ">
-
                                 <button onclick="Save()" class="col-3">支持</button>
-                                <button class="col-3">跟隨</button>
                                 <div class="col-4 d-flex   "><a href=""><i class="fab fa-facebook-square" id="icon"></i></a></div>
                             </div>
                         </h3>
@@ -79,7 +104,6 @@
                         <p>
                             @Model.Summary
                         </p>
-
                         <div class="d-flex" id="">
                             <div class="col-1 bg-success"></div>
                             <div>
@@ -89,25 +113,33 @@
                         </div>
                         <div class="d-flex">
                             <h3>NT${{value}}</h3>
-
                         </div>
                         <p>------------------------------------------</p>
-
                     </article>
                 </b-tab>
                 <b-tab title="FAQ">
-                    <iframe src="@Model.Game_show" style="width:960px;height:600px;border:0"></iframe>
+                    @*<iframe src="@Model.Game_show" style="width:960px;height:600px;border:0"></iframe>*@
                 </b-tab>
                 <b-tab title="COMMENTS"><p>I'm a disabled tab!</p></b-tab>
             </b-tabs>
         </div>
     </div>
-
 </div>
+@section topCSS {
+    <link href="~/css/ProductPage.css" rel="stylesheet" />
+    <style>
 
-@section Scripts {
+
+        #ProductId, #max, #value, #poposal_id {
+            display: none;
+        }
+    </style>
+}
+
+@section endJS {
+    <script src="~/js/getitem.js"></script>
     <script src="~/js/signalr.js"></script>
-
+    <script src="~/js/emoji.js"></script>
     <script src="~/js/barrage.js"></script>
     <script>
 
@@ -161,13 +193,9 @@
         // 全頻道訊息
         document.getElementById('submitAllBtn').addEventListener('click', function () {
             var user = document.getElementById("name").value;
-            var message = JSON.stringify({
-                mes: document.getElementById("msg").value, clo: $('#colorInput').value
-                , size: $('#rangeInput').value
-            });
-
+            var message = document.getElementById("msg").value;
+            document.getElementById("msg").value = '';
             connection.invoke("SendMessage", user, message).catch(function (err) {
-
                 return console.error(err.toString());
             });
 
@@ -175,14 +203,10 @@
 
         // 全頻道訊息傳送訊息事件
         connection.on("ReceiveMessage", function (user, message) {
-
-            var messa = JSON.parse(message);
-            var msg = `[全頻道訊息]${user}：${messa.mes}`;
+            var msg = `[全頻道訊息]${user}：${message}`;
             var li = document.createElement("li");
-
             li.textContent = msg;
             document.getElementById("messagesList").appendChild(li);
-
             Jump(message, false);
             scroll_bottom();
         });
@@ -191,7 +215,6 @@
         document.getElementById("addGroupBtn").addEventListener("click", function (event) {
             var user = document.getElementById("name").value;
             var group = document.getElementById("group").value;
-
             connection.invoke("AddGroup", group, user).catch(function (err) {
                 return console.error(err.toString());
             });
@@ -200,8 +223,7 @@
 
         // 接收加入群組訊息
         connection.on("RecAddGroupMsg", function (message) {
-            var messa = JSON.parse(message);
-            var msg = `[全頻道訊息]${user}：${messa.mes}`;
+            var msg = message;
             var li = document.createElement("li");
             li.textContent = msg;
             document.getElementById("messagesList").appendChild(li);
@@ -211,10 +233,8 @@
         document.getElementById("submitGroupBtn").addEventListener("click", function (e) {
             var user = document.getElementById("name").value;
             var group = document.getElementById("group").value;
-            var message = JSON.stringify({
-                mes: document.getElementById("msg").value, clo: $('#colorInput').value
-                , size: $('#rangeInput').value
-            });
+            var message = document.getElementById("msg").value;
+            document.getElementById("msg").value = '';
             connection.invoke("SendMessageToGroup", group, user, message).catch(function (err) {
                 return console.error(err.toString());
             });
@@ -224,11 +244,8 @@
         // 群組訊息接收事件
         connection.on("ReceiveGroupMessage", function (groupName, user, message) {
             console.log(user);
-            var messa = JSON.parse(message);
-            var msg = `[群組訊息(${groupName})]${user}：${messa.mes}`;
+            var msg = `[群組訊息(${groupName})]${user}：${message}`;
             var li = document.createElement("li");
-
-
             li.textContent = msg;
             document.getElementById("messagesList").appendChild(li);
             Jump(message, false);
@@ -253,11 +270,11 @@
         }, false)
         // 添加彈幕
         function Jump(x) {
-            const mesa = JSON.parse(x);
-            const value = mesa.mes,
+
+            const value = x,
                 time = video.currentTime,
-                color = mesa.clo,
-                fontSize = mesa.size;
+                color = $('#colorInput').value,
+                fontSize = $('#rangeInput').value;
             const obj = { value, time, color, fontSize };
             //debugger;
             canvasBarrage.addBarrage(obj);
@@ -268,17 +285,6 @@
             objDiv.scrollTop = objDiv.scrollHeight + 5;
         }
     </script>
-
-}
-
-@section TopCss {
-    <link href="~/css/ProductPage.css" rel="stylesheet" />
-    <style>
-
-        #ProductId, #max, #value, #poposal_id {
-            display: none;
-        }
-    </style>
 }
 
 

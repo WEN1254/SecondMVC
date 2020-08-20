@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +24,7 @@ namespace ScendMvc.Controllers
         {
             return View(await _context.Proposal.ToListAsync());
         }
-
+        
         // GET: Proposals/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -63,7 +64,7 @@ namespace ScendMvc.Controllers
             }
             return View(proposal);
         }
-
+        [Authorize]
         // GET: Proposals/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
