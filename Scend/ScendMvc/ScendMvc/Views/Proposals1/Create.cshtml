@@ -1,162 +1,135 @@
 ﻿@model ScendMvc.Models.Proposal
-@{
-    ViewData["Title"] = "Edit";
-}
-<h1>支持</h1>
 
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Proposal</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ProposalId" />
-            <input id="input1" type="text" class="text" value=0>
-
-            <div id="IsFavorite" class="form-group">
+            <div class="form-group">
+                <label asp-for="ProposalId" class="control-label"></label>
+                <input asp-for="ProposalId" class="form-control" />
+                <span asp-validation-for="ProposalId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="IsFavorite" class="control-label"></label>
                 <input asp-for="IsFavorite" class="form-control" />
                 <span asp-validation-for="IsFavorite" class="text-danger"></span>
             </div>
-            <div id="Title" class="form-group">
+            <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
-            <div id="Summary" class="form-group">
+            <div class="form-group">
                 <label asp-for="Summary" class="control-label"></label>
                 <input asp-for="Summary" class="form-control" />
                 <span asp-validation-for="Summary" class="text-danger"></span>
             </div>
-            <div id="ProjectCover" class="form-group">
+            <div class="form-group">
                 <label asp-for="ProjectCover" class="control-label"></label>
                 <input asp-for="ProjectCover" class="form-control" />
                 <span asp-validation-for="ProjectCover" class="text-danger"></span>
             </div>
-            <div id="TimeStart" class="form-group">
+            <div class="form-group">
                 <label asp-for="TimeStart" class="control-label"></label>
                 <input asp-for="TimeStart" class="form-control" />
                 <span asp-validation-for="TimeStart" class="text-danger"></span>
             </div>
-            <div id="TimeEnd" class="form-group">
+            <div class="form-group">
                 <label asp-for="TimeEnd" class="control-label"></label>
                 <input asp-for="TimeEnd" class="form-control" />
                 <span asp-validation-for="TimeEnd" class="text-danger"></span>
             </div>
-            <div id="Category" class="form-group">
+            <div class="form-group">
                 <label asp-for="Category" class="control-label"></label>
                 <input asp-for="Category" class="form-control" />
                 <span asp-validation-for="Category" class="text-danger"></span>
             </div>
-            <div id="Target" class="form-group">
+            <div class="form-group">
                 <label asp-for="Target" class="control-label"></label>
                 <input asp-for="Target" class="form-control" />
                 <span asp-validation-for="Target" class="text-danger"></span>
             </div>
-            <div id="Video" class="form-group">
+            <div class="form-group">
                 <label asp-for="Video" class="control-label"></label>
                 <input asp-for="Video" class="form-control" />
                 <span asp-validation-for="Video" class="text-danger"></span>
             </div>
-            <div id="Content" class="form-group">
+            <div class="form-group">
                 <label asp-for="Content" class="control-label"></label>
                 <input asp-for="Content" class="form-control" />
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
-            <div id="Principal" class="form-group">
+            <div class="form-group">
                 <label asp-for="Principal" class="control-label"></label>
                 <input asp-for="Principal" class="form-control" />
                 <span asp-validation-for="Principal" class="text-danger"></span>
             </div>
-            <div id="Email" class="form-group">
+            <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            <div id="Tel" class="form-group">
+            <div class="form-group">
                 <label asp-for="Tel" class="control-label"></label>
                 <input asp-for="Tel" class="form-control" />
                 <span asp-validation-for="Tel" class="text-danger"></span>
             </div>
-            <div id="Identity" class="form-group">
+            <div class="form-group">
                 <label asp-for="Identity" class="control-label"></label>
                 <input asp-for="Identity" class="form-control" />
                 <span asp-validation-for="Identity" class="text-danger"></span>
             </div>
-            <div id="ImgTeam" class="form-group">
+            <div class="form-group">
                 <label asp-for="ImgTeam" class="control-label"></label>
                 <input asp-for="ImgTeam" class="form-control" />
                 <span asp-validation-for="ImgTeam" class="text-danger"></span>
             </div>
-            <div id="DisplayName" class="form-group">
+            <div class="form-group">
                 <label asp-for="DisplayName" class="control-label"></label>
                 <input asp-for="DisplayName" class="form-control" />
                 <span asp-validation-for="DisplayName" class="text-danger"></span>
             </div>
-            <div id="Resume" class="form-group">
+            <div class="form-group">
                 <label asp-for="Resume" class="control-label"></label>
                 <input asp-for="Resume" class="form-control" />
                 <span asp-validation-for="Resume" class="text-danger"></span>
             </div>
-            <div id="FanPage" class="form-group">
+            <div class="form-group">
                 <label asp-for="FanPage" class="control-label"></label>
                 <input asp-for="FanPage" class="form-control" />
                 <span asp-validation-for="FanPage" class="text-danger"></span>
             </div>
-            <div id="Web" class="form-group">
+            <div class="form-group">
                 <label asp-for="Web" class="control-label"></label>
                 <input asp-for="Web" class="form-control" />
                 <span asp-validation-for="Web" class="text-danger"></span>
             </div>
-            <div id="CurrentAmount" class="form-group">
+            <div class="form-group">
                 <label asp-for="CurrentAmount" class="control-label"></label>
-                <input id="input2" asp-for="CurrentAmount" class="form-control" />
+                <input asp-for="CurrentAmount" class="form-control" />
                 <span asp-validation-for="CurrentAmount" class="text-danger"></span>
             </div>
-            <div id="Game_show"class="form-group">
+            <div class="form-group">
                 <label asp-for="Game_show" class="control-label"></label>
                 <input asp-for="Game_show" class="form-control" />
                 <span asp-validation-for="Game_show" class="text-danger"></span>
             </div>
-
             <div class="form-group">
-                <input onclick="Add()" type="submit" value="確認" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-@section TopCss {
-    <style>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
-        #CurrentAmount, #Web, #FanPage, #Resume, #DisplayName, #Identity, #ImgTeam, #Tel, #Email, #Principal, #Content, #Video, #Target, #Category, #TimeEnd, #TimeStart, #ProjectCover, #Summary, #Title, #IsFavorite,#Game_show {
-            display: none;
-        }
-    </style>
-}
-@section Scripts {
-    <script>function Add() {
-
-            var input1 = document.getElementById("input1");
-            var input1_num = parseInt(input1.value);
-
-            var input2 = document.getElementById("input2");
-            var input2_num = parseInt(input2.value);
-
-
-            if (input1.value == null) {
-                input2_num += 0;
-                input2.value = input2_num;
-
-            }
-            else {
-
-                input2_num += input1_num;
-            input2.value = input2_num;
-            }
-
-
-
-
-
-        }</script>
-}

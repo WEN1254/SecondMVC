@@ -9,22 +9,22 @@ using ScendMvc.Models;
 
 namespace ScendMvc.Controllers
 {
-    public class ProposalsController : Controller
+    public class Proposals1Controller : Controller
     {
         private readonly ScendMVCContext _context;
 
-        public ProposalsController(ScendMVCContext context)
+        public Proposals1Controller(ScendMVCContext context)
         {
             _context = context;
         }
 
-        // GET: Proposals
+        // GET: Proposals1
         public async Task<IActionResult> Index()
         {
             return View(await _context.Proposal.ToListAsync());
         }
 
-        // GET: Proposals/Details/5
+        // GET: Proposals1/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -42,13 +42,13 @@ namespace ScendMvc.Controllers
             return View(proposal);
         }
 
-        // GET: Proposals/Create
+        // GET: Proposals1/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Proposals/Create
+        // POST: Proposals1/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -64,7 +64,7 @@ namespace ScendMvc.Controllers
             return View(proposal);
         }
 
-        // GET: Proposals/Edit/5
+        // GET: Proposals1/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,7 +80,7 @@ namespace ScendMvc.Controllers
             return View(proposal);
         }
 
-        // POST: Proposals/Edit/5
+        // POST: Proposals1/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -115,7 +115,7 @@ namespace ScendMvc.Controllers
             return View(proposal);
         }
 
-        // GET: Proposals/Delete/5
+        // GET: Proposals1/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,7 +133,7 @@ namespace ScendMvc.Controllers
             return View(proposal);
         }
 
-        // POST: Proposals/Delete/5
+        // POST: Proposals1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
