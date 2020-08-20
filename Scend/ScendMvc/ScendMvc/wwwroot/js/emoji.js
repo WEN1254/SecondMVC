@@ -1,5 +1,5 @@
 ﻿
-var category = ['😀','😁','😡','🦅','🐓','🍌','🚗','🍔'];
+var category = ['','😀','😁','😡','🦅','🐓','🍌','🚗','🍔'];
 
 //$.ajax({
 //    url:'https://emoji-api.com/categories?access_key=6219f172e6b9b78d96fb8d926869fd53fae941ae',
@@ -28,7 +28,7 @@ category.forEach(x => {
 });
 function push() {
    const x = document.getElementById('emoji');
-    const num = x.selectedIndex-1;
+    const num = x.selectedIndex;
     document.getElementById('msg').value += category[num];
    
 }
