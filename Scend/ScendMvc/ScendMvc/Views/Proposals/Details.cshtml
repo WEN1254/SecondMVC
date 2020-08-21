@@ -52,6 +52,7 @@
                         </div>
                         <div class="input-group">
                             <select id="emoji" onchange="push()"></select>
+                            <button >{{present}}</button>
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">顏色</span>
                             </div>
@@ -159,9 +160,8 @@
 
         var value = document.getElementById("value");
         var Productvalue = parseInt(value.innerText);
-
-
-
+        var email;
+        
 
 
 
@@ -169,9 +169,15 @@
             el: '#ProductPage',
             data: {
                 max: Productmax,
-                value: Productvalue
+                value: Productvalue,
+                present: 0,
             },
+            methods:
+                function give() {
+                    this.present -= 1;
 
+
+                },
         });
         "use strict";
 

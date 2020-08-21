@@ -1,5 +1,7 @@
 ﻿
 var member;
+
+
 $.ajax({
     url:'/api/AspNetUsers',
     type: 'GET',
@@ -9,7 +11,13 @@ $.ajax({
         var email = localStorage.getItem('Email');
         console.log(email);
         member = response.find(x => x.userName == email);
-      
+        test._data.present = member.present;
+
+        
+       
         
     }
 })
+
+
+
