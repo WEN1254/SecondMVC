@@ -1,6 +1,7 @@
-﻿body{
-    background-color:#eee;
+﻿body {
+    background-color: #eee;
 }
+
 #ProductPage {
     /*background-color:#fff;
     border:1px ridge #aaa;*/
@@ -17,11 +18,10 @@
 /*=================影片==============================*/
 
 .video_section {
-    border-radius:5px;
+    border-radius: 5px;
 }
 
     .video_section #content {
-
     }
 
         .video_section #content #video {
@@ -48,28 +48,32 @@
     height: 71vh;
     /*box-shadow: 5px 5px .5rem #aaa;*/
     padding: 0 1rem;
-    border-radius:5px;
+    border-radius: 5px;
 }
+
     .chat_section .chat .chat_title {
         /*background-color: #eee;*/
         color: #000;
         box-shadow: 0 .5rem 1rem #aaa;
-        border-radius:3px;
+        border-radius: 3px;
         /*border-bottom:1px solid #eee;*/
-        z-index:1;
+        z-index: 1;
     }
+
         .chat_section .chat .chat_title h3 {
             font-size: 1.2rem;
-            margin:.5rem 1rem;
-            font-weight:900;
+            margin: .5rem 1rem;
+            font-weight: 900;
         }
+
     .chat_section .chat #messagesList {
-        height: 40vh;
+        height: 43vh;
         overflow: auto;
         list-style-type: none;
-        padding-left:1rem;
-        background-color:#eee;
+        padding-left: 1rem;
+        background-color: #eee;
     }
+
     .chat_section .chat #send .party {
         /*font-family: 'Noto Sans TC', sans-serif;*/
     }
@@ -80,10 +84,98 @@
 
 /*=================資訊區==============================*/
 #info {
-    margin-top: 1rem;
-    box-shadow: .5rem .5rem 1rem #aaa;
-    padding-top: 1rem;
-    background-color:#fff;
+    margin: 1rem 0;
+    box-shadow: .5rem .5rem 1rem #aaa, 0 -0.5rem 1rem #666;
+    padding: 1rem;
+    background-color: #fff;
+}
+
+.ProjectInfo {
+    color: #000;
+}
+
+    .ProjectInfo .title_info {
+        box-shadow: .5rem .5rem 1rem #ccc;
+        padding: 1rem 0;
+    }
+
+        .ProjectInfo .title_info:hover {
+            box-shadow: 0 0 1rem #00bbd6;
+        }
+
+        .ProjectInfo .title_info .title {
+            margin-left: 1rem;
+        }
+
+        .ProjectInfo .title_info .summary {
+            margin: 1rem 0 0 2rem;
+            color: #666;
+        }
+
+    .ProjectInfo .content {
+        box-shadow: .5rem .5rem 1rem #ccc;
+        padding: 1rem;
+        transition: .5s;
+    }
+
+        .ProjectInfo .content:hover {
+            box-shadow: 0 0 1rem #00bbd6;
+            padding-top: 2rem;
+            margin-top: 1rem;
+        }
+
+        .ProjectInfo .content .bar {
+            height: 1.3rem;
+        }
+
+        .ProjectInfo .content:hover .bar {
+            height: 2rem;
+            box-shadow: 0 1rem 1rem #b7e8ef;
+        }
+        .ProjectInfo .content .support{
+            font-size:1.3rem;
+            border:1px solid #00bbd6;
+        }
+        .ProjectInfo .content .support:hover {
+            cursor: pointer;
+            animation: jelly 0.5s;
+        }
+
+
+@keyframes jelly {
+    0%, 100% {
+        transform: scale(1, 1);
+    }
+
+    25% {
+        transform: scale(0.9, 1.1);
+    }
+
+    50% {
+        transform: scale(1.1, 0.9);
+    }
+
+    75% {
+        transform: scale(0.95, 1.05);
+    }
 }
 
 
+
+.left_mark {
+    display: block;
+    position: relative;
+    padding-left: 1rem;
+    font-weight: bold;
+    color: #00bbd6;
+}
+
+    .left_mark::before {
+        content: '';
+        position: absolute;
+        top: 15%;
+        left: 0;
+        width: 5px !important;
+        height: 80%;
+        background-color: #00bbd6;
+    }
