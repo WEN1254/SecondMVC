@@ -132,6 +132,7 @@
 
 @section endJS {
     @*<script src="~/js/getitem.js"></script>*@
+    
     <script src="~/js/signalr.js"></script>
     <script src="~/js/emoji.js"></script>
     <script src="~/js/barrage.js"></script>
@@ -155,25 +156,28 @@
         var Productvalue = parseInt(value.innerText);
         var email;
 
+        var member;
 
 
+      
+      
 
         var test = new Vue({
             el: '#ProductPage',
             data: {
                 max: Productmax,
                 value: Productvalue,
-                present: 0,
+                present: memnu,
             },
             methods: {
                 donet: function () {
                     this.present - 1;
-                   
+
                 }
 
             },
 
-                
+
         });
         "use strict";
 
@@ -191,8 +195,8 @@
         connection.start().catch(function (err) {
             return console.error(err.toString());
         });
-        donet =function() {
-            var sys='系統'
+        donet = function () {
+            var sys = '系統'
             var user = document.getElementById("name").value;
             var message = JSON.stringify({
                 mes: `${user}贊助了1個禮物`, clo: $('#colorInput').value, size: $('#rangeInput').value
@@ -268,10 +272,10 @@
         connection.on("ReceiveGroupMessage", function (groupName, user, message) {
             console.log(user);
             var messa = JSON.parse(message);
-           
+
             var msg = `[群組訊息(${groupName})]${user}：${messa.mes}`;
             var li = document.createElement("li");
-            
+
             li.textContent = msg;
             document.getElementById("messagesList").appendChild(li);
             Jump(message, false);
