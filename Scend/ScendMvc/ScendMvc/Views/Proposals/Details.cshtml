@@ -52,7 +52,7 @@
                         </div>
                         <div class="input-group">
                             <select id="emoji"></select>
-                            <button onclick="donet">{{present}}</button>
+                            <button onclick="donet()">{{present}}</button>
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">顏色</span>
                             </div>
@@ -131,7 +131,7 @@
 }
 
 @section endJS {
-    <script src="~/js/getitem.js"></script>
+    @*<script src="~/js/getitem.js"></script>*@
     <script src="~/js/signalr.js"></script>
     <script src="~/js/emoji.js"></script>
     <script src="~/js/barrage.js"></script>
@@ -191,16 +191,22 @@
         connection.start().catch(function (err) {
             return console.error(err.toString());
         });
-        function donet() {
+        donet =function() {
             var sys='系統'
             var user = document.getElementById("name").value;
-            var message = `${user}贊助了1個禮物`;
+            var message = JSON.stringify({
+                mes: `${user}贊助了1個禮物`, clo: $('#colorInput').value, size: $('#rangeInput').value
+            });
+            connection.invoke("SendMessage", user, message).catch(function (err) {
+
+                return console.error(err.toString());
+            });
         }
         // 全頻道訊息
         document.getElementById('submitAllBtn').addEventListener('click', function () {
             var user = document.getElementById("name").value;
             var message = JSON.stringify({
-                mes: document.getElementById("msg").value, clo: $('#colorInput').value
+                mes: document.getElementById("msg").value, clo: $('#colorInput').value, size: $('#rangeInput').value
             });
 
             connection.invoke("SendMessage", user, message).catch(function (err) {
@@ -249,7 +255,7 @@
             var user = document.getElementById("name").value;
             var group = document.getElementById("group").value;
             var message = JSON.stringify({
-                mes: document.getElementById("msg").value, clo: $('#colorInput').value
+                mes: document.getElementById("msg").value, clo: $('#colorInput').value, size: $('#rangeInput').value
             });
             connection.invoke("SendMessageToGroup", group, user, message).catch(function (err) {
                 return console.error(err.toString());
@@ -294,7 +300,7 @@
             const value = mesa.mes,
                 time = video.currentTime,
                 color = mesa.clo,
-                fontSize = $('#rangeInput').value;
+                fontSize = mesa.size;
             const obj = { value, time, color, fontSize };
             //debugger;
             canvasBarrage.addBarrage(obj);
