@@ -1,63 +1,56 @@
 ﻿@model IEnumerable<ScendMvc.Models.Proposal>
-
 @{
     ViewData["Title"] = "Index";
 }
 
-
-<div class="container" id="Fcard">
+<div class="container-fluid col-md-10" id="Fcard">
     <div class="row">
-        <div class="col-3" v-for="item in items">
-
-            <a :href=`Proposals/Details/${item.proposalId}`>
-                <b-card img-alt="Image" img-top tag="article" style="max-width: 20rem;"
-                        class=" mb-2">
-
-                    <img :src=`${item.projectCover}`>
-                    <div class="card-head form-inline border-bottom align-items-start">
-                        <p class="mr-auto">資金</p>
-                        <p v-on:click="changex(index)" class="ml-auto" v-if="item.isVIP">❤️</p>
-                        <label v-on:click="changex(index)" class="ml-auto" v-else>🤍</label>
-                    </div>
-                    <b-card-text id="productId">{{item.proposalId}}</b-card-text>
-                    <b-card-title>{{item.title}}</b-card-title>
-                    <b-card-text>{{item.summary}}</b-card-text>
-                    <b-progress :value="item.currentAmount" :max="item.target" :precision="2" show-progress class="mb-3">
-                    </b-progress>
+        <a :href=`Proposals/Details/${item.proposalId}` class="d-block col-12 col-md-6 col-lg-4" v-for="item in items">
+            <article>
+                <b-card no-body class="Proposal_Card">
+                    @*<b-card-head class="card-head form-inline border-bottom align-items-start">
+                            <p class="mr-auto">資金</p>
+                            <p v-on:click="changex(index)" class="ml-auto" v-if="item.isVIP">❤️</p>
+                            <label v-on:click="changex(index)" class="ml-auto" v-else>🤍</label>
+                        </b-card-head>*@
+                    @*<b-card-text id="productId">{{item.proposalId}}</b-card-text>*@
+                    <b-card-header class="embed-responsive embed-responsive-4by3 head">
+                        <b-card-img :src=`${item.projectCover}` alt="Image" fluid class="embed-responsive-item w-100"></b-card-img>
+                    </b-card-header>
+                    <b-card-body class="body">
+                        <b-card-title class="text-dark font-weight-bolder">{{item.title}}</b-card-title>
+                        <b-card-sub-title class="mb-3">{{item.displayName}}</b-card-sub-title>
+                        <b-card-text class="text-dark summary">{{item.summary}}</b-card-text>
+                        <div class="mb-3 bar ">
+                            <b-progress variant="info" striped :animated=true
+                                        :value="item.currentAmount" :max="item.target">
+                            </b-progress>
+                        </div>
+                    </b-card-body>
                 </b-card>
-            </a>
-
-
-
-        </div>
+            </article>
+        </a>
     </div>
 </div>
+@section topCSS
+{
+    <link href="~/css/Searching.css" rel="stylesheet" />
+}
 
-
-
-
-@section Scripts {
+@section endJS
+{
     <script>
-
         var local = localStorage.getItem("URL");
-
         localStorage.removeItem("URL");
         if (local != null) {
-
             location.href = `${local}`;
-
             console.log(Location.href);
-
         }
-
-
 
         function index(x) {
             var index = this.Fcard.items[x];
             console.log(index);
         }
-
-
 
 
         $.ajax({
@@ -68,17 +61,13 @@
             success: function (response) {
                 console.log(response);
 
-
-
                 GetProducts(response);
-
 
             }
         });
         function GetProducts(input) {
             this.Fcard.items = input;
         };
-
         var Fcard = new Vue({
             el: "#Fcard",
             data: {

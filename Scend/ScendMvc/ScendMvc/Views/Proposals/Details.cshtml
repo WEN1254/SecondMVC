@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="input-group">
-                            <select id="emoji" onchange="push()"></select>
+                            <select id="emoji"></select>
                             <button>{{present}}</button>
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">顏色</span>
@@ -79,47 +79,40 @@
                     </div>
                 </div>
                 <div>
-                    <button class="btn btn-danger"><i class="far fa-heart"></i> 追隨</button>
+                    <button class="btn btn-danger"><i class="far fa-heart mr-2"></i>追隨</button>
                 </div>
             </div>
             @*=================分頁==============================*@
             <b-tabs class="mt-3" active-nav-item-class="font-weight-bold text-uppercase text-danger"
-                    active-tab-class="font-weight-bold text-success"
+                    active-tab-class="font-weight-bold"
                     content-class="mt-3">
-                <b-tab title="STORY" active>
-                    <div>FOUNDING</div>
-                    <article>
-                        <h3>
-                            <b-progress :max="max">
-                                <b-progress-bar :value="value" :label="`${((value / max) * 100).toFixed(2)}%`"></b-progress-bar>
-                            </b-progress>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, pariatur?</p>
-                            <div class="d-flex mx-auto ">
-                                <button onclick="Save()" class="col-3">支持</button>
-                                <div class="col-4 d-flex   "><a href=""><i class="fab fa-facebook-square" id="icon"></i></a></div>
+                <b-tab title="關於" active>
+                    <article class="row">
+                        <div class="ProjectCover col-12 col-lg-6">
+                            <img class="w-100" src="https://picsum.photos/300/200/?random1" />
+                            @*<img class="w-100" src=@Model.ProjectCover />*@
+                        </div>
+                        <div class="ProjectInfo col-12 col-lg-6">
+                            <div class="title_info" id="title_info">
+                                <h3 class="title left_mark">@Model.Title</h3>
+                                <p class="summary">@Model.Summary</p>
                             </div>
-                        </h3>
-                        <H3>
-                            @Model.Title
-                        </H3>
-                        <p>
-                            @Model.Summary
-                        </p>
-                        <div class="d-flex" id="">
-                            <div class="col-1 bg-success"></div>
-                            <div>
-                                <a href="">1233</a>
-                                <p>1個廣告/地點</p>
+                            <div class="content col-lg-11 row mx-auto ml-lg-4">
+                                @*@Model.Content*@
+                                <b-progress class="bar col-12 mt-2 mb-4" :max="max" variant="info" striped :animated="true">
+                                    <b-progress-bar :value="value" :label="`${((value / max) * 100).toFixed(2)}%`"></b-progress-bar>
+                                </b-progress>
+                                <div class="col-6">
+                                    <p class="target">🏹目標金額：<span class="ml-1">@Model.Target</span></p>
+                                    <p class="amount_now">💰累積金額：<span class="ml-1">{{value}}</span></p>
+                                </div>
+                                <button onclick="Save()" class="support btn col-6"><i class="far fa-handshake mr-2"></i>贊助專案</button>
                             </div>
                         </div>
-                        <div class="d-flex">
-                            <h3>NT${{value}}</h3>
-                        </div>
-                        <p>------------------------------------------</p>
                     </article>
                 </b-tab>
-                <b-tab title="FAQ">
-                    <iframe src="@Model.Game_show" style="width:960px;height:600px;border:0"></iframe>
+                <b-tab title="展示">
+                    @*<iframe src="@Model.Game_show" style="width:960px;height:600px;border:0"></iframe>*@
                 </b-tab>
                 <b-tab title="COMMENTS"><p>I'm a disabled tab!</p></b-tab>
             </b-tabs>

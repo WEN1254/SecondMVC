@@ -63,7 +63,7 @@
         }
 
     .chat_section .chat #messagesList {
-        height: 40vh;
+        height: 43vh;
         overflow: auto;
         list-style-type: none;
         padding-left: 1rem;
@@ -79,8 +79,97 @@
     }
 /*=================資訊區==============================*/
 #info {
-    margin-top: 1rem;
-    box-shadow: .5rem .5rem 1rem #aaa;
-    padding-top: 1rem;
+    margin: 1rem 0;
+    box-shadow: .5rem .5rem 1rem #aaa, 0 -0.5rem 1rem #666;
+    padding: 1rem;
     background-color: #fff;
 }
+
+.ProjectInfo {
+    color: #000;
+}
+
+    .ProjectInfo .title_info {
+        box-shadow: .5rem .5rem 1rem #ccc;
+        padding: 1rem 0;
+    }
+
+        .ProjectInfo .title_info:hover {
+            box-shadow: 0 0 1rem #00bbd6;
+        }
+
+        .ProjectInfo .title_info .title {
+            margin-left: 1rem;
+        }
+
+        .ProjectInfo .title_info .summary {
+            margin: 1rem 0 0 2rem;
+            color: #666;
+        }
+
+    .ProjectInfo .content {
+        box-shadow: .5rem .5rem 1rem #ccc;
+        padding: 1rem;
+        transition: .5s;
+    }
+
+        .ProjectInfo .content:hover {
+            box-shadow: 0 0 1rem #00bbd6;
+            padding-top: 2rem;
+            margin-top: 1rem;
+        }
+
+        .ProjectInfo .content .bar {
+            height: 1.3rem;
+        }
+
+        .ProjectInfo .content:hover .bar {
+            height: 2rem;
+            box-shadow: 0 1rem 1rem #b7e8ef;
+        }
+
+        .ProjectInfo .content .support {
+            font-size: 1.3rem;
+            border: 1px solid #00bbd6;
+        }
+
+            .ProjectInfo .content .support:hover {
+                cursor: pointer;
+                animation: jelly 0.5s;
+            }
+
+@keyframes jelly {
+    0%, 100% {
+        transform: scale(1, 1);
+    }
+
+    25% {
+        transform: scale(0.9, 1.1);
+    }
+
+    50% {
+        transform: scale(1.1, 0.9);
+    }
+
+    75% {
+        transform: scale(0.95, 1.05);
+    }
+}
+
+.left_mark {
+    display: block;
+    position: relative;
+    padding-left: 1rem;
+    font-weight: bold;
+    color: #00bbd6;
+}
+
+    .left_mark::before {
+        content: '';
+        position: absolute;
+        top: 15%;
+        left: 0;
+        width: 5px !important;
+        height: 80%;
+        background-color: #00bbd6;
+    }
