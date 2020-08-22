@@ -131,7 +131,7 @@
 }
 
 @section endJS {
-    @*<script src="~/js/getitem.js"></script>*@
+    <script src="~/js/getitem.js"></script>
     
     <script src="~/js/signalr.js"></script>
     <script src="~/js/emoji.js"></script>
@@ -156,7 +156,6 @@
         var Productvalue = parseInt(value.innerText);
         var email;
 
-        var member;
 
 
       
@@ -167,7 +166,7 @@
             data: {
                 max: Productmax,
                 value: Productvalue,
-                present: memnu,
+                present:0,
             },
             methods: {
                 donet: function () {
