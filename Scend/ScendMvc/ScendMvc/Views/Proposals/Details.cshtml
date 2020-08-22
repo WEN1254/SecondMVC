@@ -52,7 +52,7 @@
                         </div>
                         <div class="input-group">
                             <select id="emoji"></select>
-                            <button>{{present}}</button>
+                            <button onclick="donet">{{present}}</button>
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">顏色</span>
                             </div>
@@ -165,12 +165,15 @@
                 value: Productvalue,
                 present: 0,
             },
-            methods:
-                function give() {
-                    this.present -= 1;
+            methods: {
+                donet: function () {
+                    this.present - 1;
+                   
+                }
 
+            },
 
-                },
+                
         });
         "use strict";
 
@@ -188,7 +191,11 @@
         connection.start().catch(function (err) {
             return console.error(err.toString());
         });
-
+        function donet() {
+            var sys='系統'
+            var user = document.getElementById("name").value;
+            var message = `${user}贊助了1個禮物`;
+        }
         // 全頻道訊息
         document.getElementById('submitAllBtn').addEventListener('click', function () {
             var user = document.getElementById("name").value;
