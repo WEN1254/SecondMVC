@@ -13,7 +13,7 @@ $.ajax({
         
         test._data.present = member.Present;
 
-        
+        debugger;
         
 
     }
