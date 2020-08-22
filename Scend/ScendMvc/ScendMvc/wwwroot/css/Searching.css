@@ -1,0 +1,33 @@
+﻿a, a:hover, a:visited, a:link, a:active {
+    color: #000;
+    text-decoration: none;
+    outline: none;
+}
+
+body {
+    background-color: #eee;
+}
+
+#Fcard {
+    margin-top: 2rem;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.Proposal_Card {
+    border: .1rem solid #aaa;
+    transition: .5s;
+}
+
+    .Proposal_Card:hover {
+        box-shadow: 0 0 1.5rem #aaa;
+    }
+
+    .Proposal_Card .body .summary {
+        height: 15vh;
+    }
+
+    .Proposal_Card .body .bar {
+        border: .1rem solid #00bbd6;
+        padding: .3rem;
+        border-radius: 5px;
+    }
