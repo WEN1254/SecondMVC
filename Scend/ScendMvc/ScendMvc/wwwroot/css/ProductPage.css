@@ -1,101 +1,86 @@
 ﻿body {
-}
-.container-roll {
-    margin-top: 200px;
-    padding-bottom: 0%;
-    text-align: start;
+    background-color: #eee;
 }
 
-#info {
-    padding: 0 30px;
+#ProductPage {
+    /*background-color:#fff;
+    border:1px ridge #aaa;*/
+    margin-top: 2rem;
+    font-family: 'Noto Sans TC', sans-serif;
 }
 
-#text article H3 {
-    font-size: 1.5rem;
+.media {
+    background-color: #000;
+    box-shadow: .5rem .5rem 1rem #aaa;
+    border-radius: 5px;
+}
+/*=================影片==============================*/
+.video_section {
+    border-radius: 5px;
 }
 
-#text article {
-    font-size: .5rem;
-}
-
-#asd {
-    padding-bottom: 3rem;
-}
-
-#icon {
-    font-size: 1rem;
-}
-
-@media screen and (min-width: 960px) {
-    #block1 {
-        flex-wrap: wrap;
+    .video_section #content {
     }
-}
 
-
-
-h1 {
-    margin-top: 10px;
-    text-align: center;
-}
+        .video_section #content #video {
+            width: 100%;
+            height: 70vh;
+        }
 
 #content {
-    width: 710px;
-    margin: 20px auto;
+    width: 100%;
+    /*margin: auto;*/
     position: relative;
 }
 
 #canvas {
     position: absolute;
-    right: 10;
+    right: 0;
     top: 0;
-    
+}
+/*=================聊天室==============================*/
+.chat_section {
+    background-color: #fff;
+    height: 71vh;
+    /*box-shadow: 5px 5px .5rem #aaa;*/
+    padding: 0 1rem;
+    border-radius: 5px;
 }
 
-.form-item {
-    display: flex;
-    color: #666;
-    margin: 10px auto;
-    align-content: center;
-    justify-content: center;
-}
-
-.form-item .input {
-        font-size: 14px;
-        border: 1px solid #d9d9d9;
-        outline: none;
-        padding: 5px 10px;
-}
-
-.form-item .name {
-        margin-left: 10px;
-}
-
-.form-item .btn {
-        outline: none;
-        padding: 5px 10px;
-        text-align: center;
-        border: 1px solid #0d90ee;
-        background-color: #0d90ee;
-        color: #fff;
+    .chat_section .chat .chat_title {
+        /*background-color: #eee;*/
+        color: #000;
+        box-shadow: 0 .5rem 1rem #aaa;
         border-radius: 3px;
-        margin-left: 10px;
-        cursor: pointer;
-}
-#chat_viedo {
-    display: flex;
-}
+        /*border-bottom:1px solid #eee;*/
+        z-index: 1;
+    }
 
-.video_section video {
-    /*height: 50vh;*/
-}
+        .chat_section .chat .chat_title h3 {
+            font-size: 1.2rem;
+            margin: .5rem 1rem;
+            font-weight: 900;
+        }
 
-.chat_section .chat #messagesList {
-    height: 33vh;
-    overflow: auto;
-}
+    .chat_section .chat #messagesList {
+        height: 40vh;
+        overflow: auto;
+        list-style-type: none;
+        padding-left: 1rem;
+        background-color: #eee;
+    }
 
-.chat_section .chat #send {
-    /*height: 15vh;*/
-}
+    .chat_section .chat #send .party {
+        /*font-family: 'Noto Sans TC', sans-serif;*/
+    }
 
+    .chat_section .chat #send {
+        /*box-shadow: 0 5px 1rem #aaa;*/
+    }
+/*=================資訊區==============================*/
+#info {
+    margin-top: 1rem;
+    box-shadow: .5rem .5rem 1rem #aaa;
+    padding-top: 1rem;
+    background-color: #fff;
+}
