@@ -52,7 +52,7 @@
                         </div>
                         <div class="input-group">
                             <select id="emoji"></select>
-                            <button onclick="donet()">{{present}}</button>
+                            <button id="present" onclick="donet()"></button>
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">顏色</span>
                             </div>
@@ -166,13 +166,11 @@
             data: {
                 max: Productmax,
                 value: Productvalue,
-                present:0
+               
             },
             methods: {
-                donet: function () {
-                    this.present - 1;
-
-                }
+                
+               
 
             },
 
@@ -194,17 +192,28 @@
         connection.start().catch(function (err) {
             return console.error(err.toString());
         });
+        
         donet = function () {
-            var sys = '系統'
-            var user = document.getElementById("name").value;
-            var message = JSON.stringify({
-                mes: `${user}贊助了1個禮物`, clo: $('#colorInput').value, size: $('#rangeInput').value
-            });
-            connection.invoke("SendMessage", user, message).catch(function (err) {
+            if (present > 0) {
+                present -= 1;
+                document.getElementById('present').innerHTML = present;
+                var sys = '系統'
+                var user = document.getElementById("name").value;
+                var message = JSON.stringify({
+                    mes: `${user}贊助了1個禮物`, clo: $('#colorInput').value, size: $('#rangeInput').value
+                });
+                connection.invoke("SendMessage", sys, message).catch(function (err) {
 
-                return console.error(err.toString());
-            });
-        }
+                    return console.error(err.toString());
+                });
+            }
+            else {
+                alert('禮物送完了去儲值吧!')
+                document.getElementById('presen').disabled;
+            }
+            }
+
+        
         // 全頻道訊息
         document.getElementById('submitAllBtn').addEventListener('click', function () {
             var user = document.getElementById("name").value;

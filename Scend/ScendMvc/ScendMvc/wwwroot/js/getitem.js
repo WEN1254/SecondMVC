@@ -1,4 +1,5 @@
 ﻿var member;
+var present=0;
 
 
 $.ajax({
@@ -10,11 +11,11 @@ $.ajax({
         var email = localStorage.getItem('Email');
         console.log(email);
         member = response.find(x => x.userName == email);
-        
-        test._data.present = member.Present;
 
-        debugger;
-        
+        present = member.present;
+
+
+        document.getElementById('present').innerHTML = present;
 
     }
 })
