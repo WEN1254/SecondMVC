@@ -25,47 +25,34 @@ function CreateCategory(x) {
     };
     const groupbycharacter = x.groupBy('group');
     console.log(`${groupbycharacter}`)
-    ary = new Array();
-    for (x in groupbycharacter) ary[ary.length] = x;
-    debugger;
+    for (var x in groupbycharacter) {
+        var emojitable = document.getElementById('emojitable');
+        var categorybtn = document.createElement('button');
+        categorybtn.innerHTML = `${x}`;
+        emojitable.appendChild(categorybtn);
+        var emojichil = document.createElement(`div${x}`);;
+        groupbycharacter[x].forEach(e => {
+           
+            const emojibtn = document.createElement('button');
+            emojibtn.innerHTML = `${e.character}`;
+            emojibtn.setAttribute('onclick', `push(${e.character})`);
+            emojichil.appendChild(emojibtn);
+           
 
-    //groupbycharacter.forEach(x => {
-    //var emojibtn = document.createElement('option')
-    //emojibtn.innerHTML = x;
+        });
+        emojitable.appendChild(emojichil);
+     
+    }
+   
+   
 
-    //emoji.appendChild(emojibtn);
-
-
-    //});
-    debugger;
 }
 
 
 
-
-//var emoji = document.getElementById('emoji');
-
-//category.forEach(x => {
-//    var emojibtn = document.createElement('option')
-//    emojibtn.innerHTML = x;
-
-//    emoji.appendChild(emojibtn);
-
-
-//});
-//function push() {
-//    const x = document.getElementById('emoji');
-//    const num = x.selectedIndex;
-//    document.getElementById('msg').value += category[num];
+//function push(x) {
+//    debugger;
+//    document.getElementById('msg').value += x;
 
 //}
 
-var face={
-    "slug": "beaming-face-with-smiling-eyes",
-        "character": "\ud83d\ude01",
-            "unicodeName": "beaming face with smiling eyes",
-                "codePoint": "1F601",
-                    "group": "smileys-emotion",
-                        "subGroup": "face-smiling"
-};
-console.log(`${face.slug},${face.character},${face.codePoint}`);
