@@ -1,0 +1,65 @@
+﻿
+#navbar {
+    padding:1rem;
+    color:#fff;
+    border-left:1rem ridge #aaa;
+    box-shadow:0 0.5rem 1rem #666;
+    padding-left:1.2rem;
+
+}
+    #navbar .nav_brand {
+        background-color: #000;
+        padding: .5rem 1rem;
+        border-radius: 5px;
+        transition: .5s;
+    }
+        #navbar .nav_brand:hover {
+            box-shadow: 0 0 1rem #aaa;
+            border-radius: 10px;
+            margin-right: 2rem;
+            border-left: 5px solid #aaa;
+        }
+        #navbar .nav_brand i{
+            transition:.5s;
+        }
+        #navbar .nav_brand:hover i {
+            transform: rotate(360deg);
+        }
+            .nav_btn {
+                border-left: 1px double #aaa;
+                padding: 0 1rem;
+                transition: .5s;
+            }
+    .nav_btn:hover {
+        margin-right: 1rem;
+        box-shadow: 0 0 1rem #aaa;
+        padding: 0 1rem;
+        border-radius: 5px;
+        border-left: 5px solid #aaa;
+    }
+.Login {
+    border-left: 1px double #aaa;
+    padding: 0 1rem;
+    transition: .5s;
+}
+    .Login:hover {
+        margin-right: 1rem;
+        box-shadow: 0 0 1rem #aaa;
+        padding: 0 1rem;
+        border-radius: 5px;
+        border-left: 5px solid #aaa;
+    }
+    .Login .dropdown-menu {
+        background-color: #333;
+    }
+    .Login .dropdown-item {
+        background-color: #333;
+        color: #fff;
+        border-bottom: 2px solid #aaa;
+        transition: .5s;
+    }
+        .Login .dropdown-item:hover {
+            background-color: #333;
+            border-left: 1rem solid #aaa;
+        }
+
