@@ -180,9 +180,9 @@
 
 
         ////
-        const $ = document.querySelector.bind(document);
-        const canvas = $('#canvas');
-        const video = $('#video');
+        const dmmo = document.querySelector.bind(document);
+        const canvas = dmmo('#canvas');
+        const video = dmmo('#video');
 
 
         //上面彈幕
@@ -206,13 +206,18 @@
 
                     return console.error(err.toString());
                 });
+                var data = { UserName: localStorage.getItem('Email'), present: present }
+
+                post(data);
+
+
             }
             else {
                 alert('禮物送完了去儲值吧!')
                 document.getElementById('presen').disabled;
             }
-            }
-
+        }
+        
         
         // 全頻道訊息
         document.getElementById('submitAllBtn').addEventListener('click', function () {
@@ -321,6 +326,34 @@
         function scroll_bottom() {
             var objDiv = document.getElementById("messagesList");
             objDiv.scrollTop = objDiv.scrollHeight + 5;
+        }
+        function getItems() {
+            fetch(uri)
+                .then(response => response.json())
+               
+                .catch(error => console.error('Unable to get items.', error));
+        }
+        const uri = '/api/AspNetUsers';
+        function post(x) {
+           
+            const itemId = x.UserName;
+            const item = x.present;
+
+            fetch(`${uri}/${itemId}`, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(item)
+            })
+                .then(() => getItems())
+                .catch(error => console.error('Unable to update item.', error));
+
+           
+
+            return false;
+
         }
     </script>
 }

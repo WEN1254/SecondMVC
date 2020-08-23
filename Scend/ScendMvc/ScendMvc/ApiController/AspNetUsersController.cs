@@ -28,10 +28,11 @@ namespace ScendMvc.ApiController
         }
 
         // GET: api/AspNetUsers/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<AspNetUsers>> GetAspNetUsers(string id)
+        [HttpGet("{username}")]
+        public async Task<ActionResult<AspNetUsers>> GetAspNetUsers(string username
+            )
         {
-            var aspNetUsers = await _context.AspNetUsers.FindAsync(id);
+            var aspNetUsers = await _context.AspNetUsers.FindAsync(username);
 
             if (aspNetUsers == null)
             {
@@ -44,10 +45,10 @@ namespace ScendMvc.ApiController
         // PUT: api/AspNetUsers/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutAspNetUsers(string id, AspNetUsers aspNetUsers)
+        [HttpPut("{UserName}")]
+        public async Task<IActionResult> PutAspNetUsers(string UserName, AspNetUsers aspNetUsers)
         {
-            if (id != aspNetUsers.Id)
+            if (UserName != aspNetUsers.UserName)
             {
                 return BadRequest();
             }
@@ -60,7 +61,7 @@ namespace ScendMvc.ApiController
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AspNetUsersExists(id))
+                if (!AspNetUsersExists(UserName))
                 {
                     return NotFound();
                 }
