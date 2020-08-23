@@ -6,21 +6,21 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="dropdown-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
     </li>
     <li class="dropdown-item">
         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button type="submit" class="nav-link btn btn-link text-dark">登出</button>
+            <button type="submit" class="nav-link btn btn-link">登出</button>
         </form>
     </li>
 }
 else
 {
     <li class="dropdown-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">註冊</a>
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">註冊</a>
     </li>
     <li class="dropdown-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">登入</a>
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">登入</a>
     </li>
 }
 @*<ul class="navbar-nav">

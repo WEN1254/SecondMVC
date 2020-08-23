@@ -49,3 +49,17 @@
         border-radius: 5px;
         border-left: 5px solid #aaa;
     }
+    .Login .dropdown-menu {
+        background-color: #333;
+    }
+    .Login .dropdown-item {
+        background-color: #333;
+        color: #fff;
+        border-bottom: 2px solid #aaa;
+        transition: .5s;
+    }
+        .Login .dropdown-item:hover {
+            background-color: #333;
+            border-left: 1rem solid #aaa;
+        }
+
