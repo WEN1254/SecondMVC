@@ -1,22 +1,18 @@
 ﻿@page
 @model RegisterConfirmationModel
-@{
-    ViewData["Title"] = "Register confirmation";
-}
 
-<h1>@ViewData["Title"]</h1>
-@{
-    if (@Model.DisplayConfirmAccountLink)
-    {
-<p>
-    This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
-    Normally this would be emailed: <a id="confirm-link" href="@Model.EmailConfirmationUrl">Click here to confirm your account</a>
-</p>
-    }
-    else
-    {
-<p>
-        Please check your email to confirm your account.
-</p>
-    }
-}
+<link href="//fonts.googleapis.com/css?family=Cedarville+Cursive" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="~/RegisterConfirmation css/style.css">
+<link rel="stylesheet" type="text/css" href="~/RegisterConfirmation css/font-awesome.css">
+
+<div class="header">
+    <h1>ScendMvc</h1>
+</div>
+<div class="w3-main">
+    <div class="agile-info">
+        @*<h2>404</h2>*@
+        <p>Please check your email to confirm your account..</p>
+        <div id="walker"></div>
+    </div>
+</div>
