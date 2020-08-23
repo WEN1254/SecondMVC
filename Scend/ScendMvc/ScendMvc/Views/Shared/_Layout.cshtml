@@ -1,5 +1,4 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,8 +19,9 @@
     <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
 
     <!-- Load the following for BootstrapVueIcons support -->
-
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
     @*CKEditor文字編輯連結*@
     <script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/classic/ckeditor.js"></script>
 
@@ -30,6 +30,8 @@
     <!-- Roboto -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 
+    <link href="~/css/Navbar.css" rel="stylesheet" />
+    <link href="~/css/FooterPartial.css" rel="stylesheet" />
     @RenderSection("topCSS", required: false)
 </head>
 <body>
@@ -38,7 +40,7 @@
 
     <partial name="/Views/Home/_NavBarPartial.cshtml" />
     @RenderBody()
-
+    <partial name="/Views/Home/_FooterPartial.cshtml" />
 
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

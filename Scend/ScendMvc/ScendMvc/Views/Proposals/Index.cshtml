@@ -5,9 +5,9 @@
 }
 
 
-<div class="container-fluid col-md-10" id="Fcard">
+<div class="container-fluid col-md-9" id="Fcard">
     <div class="row">
-        <a :href=`Proposals/Details/${item.proposalId}` class="d-block col-12 col-md-6 col-lg-4" v-for="item in items">
+        <a :href=`Proposals/Details/${item.proposalId}` class="mb-3 d-block col-12 col-md-6 col-lg-4" v-for="item in items">
             <article>
                 <b-card no-body class="Proposal_Card">
 
@@ -18,19 +18,22 @@
                         </b-card-head>*@
                     @*<b-card-text id="productId">{{item.proposalId}}</b-card-text>*@
                     <b-card-header class="embed-responsive embed-responsive-4by3 head">
-                        <b-card-img :src=`${item.projectCover}` alt="Image" fluid class="embed-responsive-item w-100"></b-card-img>
+                        <div class="embed-responsive-item ">
+                            <b-card-img :src=`${item.projectCover}` alt="Image"></b-card-img>
+                        </div>
                     </b-card-header>
+
                     <b-card-body class="body">
                         <b-card-title class="text-dark font-weight-bolder">{{item.title}}</b-card-title>
                         <b-card-sub-title class="mb-3">{{item.displayName}}</b-card-sub-title>
                         <b-card-text class="text-dark summary">{{item.summary}}</b-card-text>
-                        <div class="mb-3 bar ">
+                    </b-card-body>
+
+                    <b-card-footer >
                             <b-progress variant="info" striped :animated=true
                                         :value="item.currentAmount" :max="item.target">
                             </b-progress>
-                        </div>
-
-                    </b-card-body>
+                    </b-card-footer>
 
                 </b-card>
             </article>
@@ -76,12 +79,7 @@
             async: true,
             success: function (response) {
                 console.log(response);
-
-
-
                 GetProducts(response);
-
-
             }
         });
         function GetProducts(input) {
