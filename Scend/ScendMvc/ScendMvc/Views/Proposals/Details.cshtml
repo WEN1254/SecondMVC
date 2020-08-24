@@ -41,7 +41,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">暱稱</span>
                             </div>
-                            <input type="text" id="name" class="form-control" placeholder="輸入暱稱" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <input type="text" id="name" class="form-control" placeholder="輸入暱稱" aria-label="Recipient's username" aria-describedby="button-addon2"value="遊客">
                         </div>
                         <div class="input-group">
                             <input type="text" id="msg" class="form-control" placeholder="輸入訊息" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -51,10 +51,68 @@
                             </div>
                         </div>
                         <div class="input-group">
-                            <div id="emojitable">
-                                
-                            </div>
+                            <b-button id="popover-target-1">
+                                Emoji
+                            </b-button>
+                            <b-popover target="popover-target-1" triggers="hover" placement="top" >
+                                <div>
+                                    <b-tabs content-class="mt-3" id="emojitable">
+                                        <b-tab>
+                                            <template v-slot:title>
+                                                face
+                                            </template>
+                                            <button v-for="x in face " v-on:click="call">{{x.character}}</button>
 
+                                        </b-tab>
+                                        <b-tab>
+                                            <template v-slot:title>
+                                                body
+                                            </template>
+                                            <button v-for="x in body " v-on:click="call">{{x.character}}</button>
+
+                                        </b-tab>
+                                        <b-tab>
+                                            <template v-slot:title>
+                                                food
+                                            </template>
+                                            <button v-for="x in food " v-on:click="call">{{x.character}}</button>
+
+                                        </b-tab>
+                                        <b-tab>
+                                            <template v-slot:title>
+                                                animal
+                                            </template>
+                                            <button v-for="x in animal " v-on:click="call">{{x.character}}</button>
+
+                                        </b-tab>
+                                        <b-tab>
+                                            <template v-slot:title>
+                                                travel
+                                            </template>
+                                            <button v-for="x in travel " v-on:click="call">{{x.character}}</button>
+
+                                        </b-tab>
+                                        
+                                        
+                                        <b-tab>
+                                            <template v-slot:title>
+                                                symbols
+                                            </template>
+                                            <button v-for="x in symbols " v-on:click="call">{{x.character}}</button>
+
+                                        </b-tab>
+                                        <b-tab>
+                                            <template v-slot:title>
+                                                flags
+                                            </template>
+                                            <button v-for="x in flags " v-on:click="call">{{x.character}}</button>
+
+                                        </b-tab>
+
+                                    </b-tabs>
+                                </div>
+                               
+                            </b-popover>
                             <button id="present" onclick="donet()"></button>
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">顏色</span>
@@ -139,7 +197,7 @@
     <script src="~/js/getitem.js"></script>
     
     <script src="~/js/signalr.js"></script>
-    <script src="~/js/emoji.js"></script>
+   @* <script src="~/js/emoji.js"></script>*@
     <script src="~/js/barrage.js"></script>
     <script>
 
@@ -171,9 +229,63 @@
             data: {
                 max: Productmax,
                 value: Productvalue,
-               
-            },
+                groupbycharacter: [],
+                face: {},
+                body: {},
+                food: {},
+                animal: {},
+                travel: {},
+              
+                symbols: {},
+                flags: {},
+
+                
+            }, created:
+                function () {
+                    
+                    $.ajax({
+                        url: 'https://emoji-api.com/emojis?access_key=6219f172e6b9b78d96fb8d926869fd53fae941ae',
+                        type: 'GET',
+                        data: '',
+                        async: true,
+                        success: function (response) {
+
+                            var  category = response;
+
+                            Array.prototype.groupBy = function (prop) {
+                                return this.reduce(function (groups, item) {
+                                    const val = item[prop]
+                                    groups[val] = groups[val] || []
+                                    groups[val].push(item)
+                                    return groups
+                                }, {})
+                            };
+                           
+                            groupbycharacter = category.groupBy('group');
+                           
+                            test.face = groupbycharacter["smileys-emotion"];
+                            test.body = groupbycharacter["people-body"];
+                            test.food = groupbycharacter["food-drink"];
+                            test.animal = groupbycharacter["animals-nature"];
+                            test.travel = groupbycharacter["travel-places"];
+                           
+                            test.symbols = groupbycharacter["symbols"];
+                            test.flags = groupbycharacter["flags"];
+                            for (var x in groupbycharacter) {
+                              
+                                test.groupbycharacter.push(x);
+                            }
+                            
+                           
+                        }
+                    })},
+
+            
             methods: {
+                call: function (event) {
+                    document.getElementById('msg').value += event.target.innerHTML;
+                    
+                }
                 
                
 

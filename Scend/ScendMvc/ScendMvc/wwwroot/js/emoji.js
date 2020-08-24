@@ -1,5 +1,4 @@
 ﻿
-//var category = ['', '😀', '😁', '😡', '🦅', '🐓', '🍌', '🚗', '🍔'];
 var category;
 $.ajax({
     url: 'https://emoji-api.com/emojis?access_key=6219f172e6b9b78d96fb8d926869fd53fae941ae',
@@ -27,8 +26,9 @@ function CreateCategory(x) {
     console.log(`${groupbycharacter}`)
     for (var x in groupbycharacter) {
         var emojitable = document.getElementById('emojitable');
-        var categorybtn = document.createElement('button');
-        categorybtn.innerHTML = `${x}`;
+        var categorybtn = document.createElement('b-tab');
+        
+        categorybtn.title = `${x}`;
         emojitable.appendChild(categorybtn);
         var emojichil = document.createElement(`div${x}`);;
         groupbycharacter[x].forEach(e => {
