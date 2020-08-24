@@ -89,20 +89,25 @@
     padding: 1rem;
     background-color: #fff;
     border-radius: 5px;
+    margin-bottom:2rem;
+    padding-top:1.5rem;
 }
 
 .tab {
     border-left: .3rem solid #eee;
 }
+#emojitable{
+    width:15rem;
+}
 
-    .tab .nav-link {
-        background-color: #0D5661;
-        padding: 1rem 2rem;
-        font-size: 1rem;
-        color: #fff;
-        border-right: .3rem double #fff;
-        box-shadow: 0 0 .5rem #aaa;
-    }
+.tab .nav-link {
+    background-color: #0D5661;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    color: #fff;
+    border-right: .3rem double #fff;
+    box-shadow: 0 0 .5rem #aaa;
+}
 
         .tab .nav-link.active {
             background-color: #fff;
