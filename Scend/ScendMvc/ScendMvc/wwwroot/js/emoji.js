@@ -35,7 +35,7 @@ function CreateCategory(x) {
            
             const emojibtn = document.createElement('button');
             emojibtn.innerHTML = `${e.character}`;
-            emojibtn.setAttribute('onclick', `push(${e.character})`);
+            emojibtn.setAttribute('onclick', `push(this)`);
             emojichil.appendChild(emojibtn);
            
 
@@ -50,9 +50,9 @@ function CreateCategory(x) {
 
 
 
-//function push(x) {
-//    debugger;
-//    document.getElementById('msg').value += x;
+function push(x,y) {
+    
+    document.getElementById('msg').value += x.innerHTML;
 
-//}
+}
 
