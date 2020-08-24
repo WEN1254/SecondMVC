@@ -1,7 +1,18 @@
 ﻿@page
 @model ConfirmEmailModel
-@{
-    ViewData["Title"] = "Confirm email";
-}
 
-<h1>@ViewData["Title"]</h1>
+<link href="//fonts.googleapis.com/css?family=Cedarville+Cursive" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="~/RegisterConfirmation css/style.css">
+<link rel="stylesheet" type="text/css" href="~/RegisterConfirmation css/font-awesome.css">
+
+<div class="header">
+    <h1>ScendMvc</h1>
+</div>
+<div class="w3-main">
+    <div class="agile-info">
+        @*<h2>404</h2>*@
+        <p>@ViewData["StatusMessage"]</p>
+        <div id="walker"></div>
+    </div>
+</div>

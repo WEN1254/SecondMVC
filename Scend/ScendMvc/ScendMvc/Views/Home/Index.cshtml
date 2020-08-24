@@ -1,24 +1,131 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model ScendMvc.Models.Proposal
+
+    <div class="col-12 mx-auto" id="Fcard">
+        <section class="carousel_section col-12 mx-auto">
+            <b-carousel id="carousel_game" class="mx-auto col-12 col-md-9"
+                        v-model="slide"
+                        :interval="4000"
+                        controls
+                        indicators
+                        background="#ababab"
+                        :img-width="1024"
+                        :img-height="480"
+                        style="text-shadow: 1px 1px 2px #333;"
+                        @@sliding-start="onSlideStart"
+                        @@sliding-end="onSlideEnd">
+
+                <!-- Text slides with image -->
+                <b-carousel-slide v-for="item in fake_data"
+                                  :caption=item.title
+                                  :text=item.summary
+                                  :img-src="item.url">
+                </b-carousel-slide>
+            </b-carousel>
+        </section>
+   
+      <section class="fund_title col-12 mx-auto ">
+          <h3 class="col-12 col-md-9">群眾集資</h3>
+      </section>
+        <section class="card_section">
+            <div class="cards row col-12 col-md-9 mx-auto">
+                <a :href=`Proposals/Details/${item.proposalId}` class="mb-3 d-block col-12 col-md-6 col-lg-4" v-for="item in items">
+                    <article>
+                        <b-card no-body class="Proposal_Card">
+                            <b-card-header class="embed-responsive embed-responsive-4by3 head">
+                                <div class="embed-responsive-item ">
+                                    <b-card-img :src=`${item.projectCover}` alt="Image"></b-card-img>
+                                </div>
+                            </b-card-header>
+
+                            <b-card-body class="body">
+                                <b-card-title class="text-dark font-weight-bolder">{{item.title}}</b-card-title>
+                                <b-card-sub-title class="mb-3">{{item.displayName}}</b-card-sub-title>
+                                <b-card-text class="text-dark summary">{{item.summary}}</b-card-text>
+                            </b-card-body>
+
+                            <b-card-footer>
+                                <b-progress variant="info" striped :animated=true
+                                            :value="item.currentAmount" :max="item.target">
+                                </b-progress>
+                            </b-card-footer>
+
+                        </b-card>
+                    </article>
+                </a>
+            </div>
+        </section>
+      
+
+    </div>
 
 
-<div id="Carousel">
-    <b-carousel id="carousel-no-animation" style="text-shadow: 0px 0px 2px #000" no-animation indicators
-                img-width="1024" img-height="480">
-        <b-carousel-slide caption="First slide" img-src="https://picsum.photos/1024/480/?image=10">
-        </b-carousel-slide>
-        <b-carousel-slide caption="Second Slide" img-src="https://picsum.photos/1024/480/?image=12">
-        </b-carousel-slide>
-        <b-carousel-slide caption="Third Slide" img-src="https://picsum.photos/1024/480/?image=22">
-        </b-carousel-slide>
-        <b-carousel-slide caption="Fourth Slide" img-src="https://picsum.photos/1024/480/?image=23">
-        </b-carousel-slide>
-    </b-carousel>
-</div>
 
 
 @section topCSS
 {
     <link href="~/css/Home.css" rel="stylesheet" />
+}
+
+
+@section endJS
+{
+    <script>
+
+        var local = localStorage.getItem("URL");
+
+        localStorage.removeItem("URL");
+        if (local != null) {
+
+            location.href = `${local}`;
+
+            console.log(Location.href);
+
+        }
+
+
+
+        function index(x) {
+            var index = this.Fcard.items[x];
+            console.log(index);
+        }
+
+        $.ajax({
+            url: "Proposals/Details/api/Proposals",
+            type: 'GET',
+            data: '',
+            async: true,
+            success: function (response) {
+                console.log(response);
+                GetProducts(response);
+            }
+        });
+        function GetProducts(input) {
+            this.Fcard.items = input;
+        };
+
+        var Fcard = new Vue({
+            el: "#Fcard",
+            data: {
+                items: [],
+                slide: 0,
+                sliding: null,
+                fake_data: [
+                    { title: '《唐苑》', summary: '歐美狂銷 3000 萬，全球排名前 1% 桌遊：《唐苑》台灣中文版', url: 'https://s3-ap-northeast-1.amazonaws.com/zeczec-prod/asset_208836_image_big.jpg?1597381582' },
+                    { title: '星途(Path of Star)', summary: '臺灣《星海爭霸II》社群賽事 -《星途》募資，讓電子競技選手持續發光發熱！', url: 'https://s3-ap-northeast-1.amazonaws.com/zeczec-prod/asset_95435_image_big.png?1556858822' },
+                    { title: '《陰間條例｜夜神旅店》', summary: '最美御姐城隍加上最帥氣七爺八爺，再搭上時下風靡世界的新型態遊戲「劇本殺」', url: 'https://s3-ap-northeast-1.amazonaws.com/zeczec-prod/asset_210087_image_big.jpg?1597735565' },
+                ]
+            },
+            methods: {
+                onSlideStart(slide) {
+                    this.sliding = true
+                },
+                onSlideEnd(slide) {
+                    this.sliding = false
+                }
+            }
+        })
+    </script>
 }

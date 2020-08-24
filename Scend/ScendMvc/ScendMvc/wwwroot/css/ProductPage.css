@@ -84,15 +84,17 @@
 
 /*=================資訊區==============================*/
 #info {
-    margin-top:2rem;
+    margin-top: 2rem;
     box-shadow: .5rem .5rem 1rem #aaa, 0 -0.5rem 1rem #666;
     padding: 1rem;
     background-color: #fff;
-    border-radius:5px;
+    border-radius: 5px;
 }
+
 .tab {
-    border-left:.3rem solid #eee;
+    border-left: .3rem solid #eee;
 }
+
     .tab .nav-link {
         background-color: #0D5661;
         padding: 1rem 2rem;
@@ -101,6 +103,7 @@
         border-right: .3rem double #fff;
         box-shadow: 0 0 .5rem #aaa;
     }
+
         .tab .nav-link.active {
             background-color: #fff;
             padding: 1rem 2rem;
@@ -109,30 +112,35 @@
             box-shadow: .5rem .5rem 1rem #aaa;
             margin-left: .5rem;
             border-right: .3rem double #0D5661;
+            transition: .5s;
         }
+
         .tab .nav-link:hover {
             animation: jelly 0.5s;
             box-shadow: 0 0 .5rem #aaa;
             box-shadow: .5rem .5rem .5rem #aaa;
-            margin:0 .7rem;
+            margin: 0 .7rem;
         }
 
-    .ProjectCover {
-        border: .5rem double #aaa;
-        transition: .5s;
-    }
+.ProjectCover {
+    border: .5rem double #aaa;
+    transition: .5s;
+}
+
     .ProjectCover:hover {
         border: .5rem solid #fff;
         box-shadow: 0 0 1rem #aaa;
     }
 
-    .ProjectInfo {
-        color: #000;
-    }
+.ProjectInfo {
+    color: #000;
+}
 
     .ProjectInfo .title_info {
         box-shadow: .5rem .5rem 1rem #ccc;
         padding: 1rem 0;
+        cursor: pointer;
+        border-radius: 5px;
     }
 
         .ProjectInfo .title_info:hover {
@@ -148,13 +156,15 @@
             color: #666;
         }
 
-        .ProjectInfo .content {
-            box-shadow: .5rem .5rem 1rem #ccc;
-            padding: 1rem;
-            transition: .5s;
-            color: #0D5661;
-            font-weight:bold;
-        }
+    .ProjectInfo .content {
+        box-shadow: .5rem .5rem 1rem #ccc;
+        padding: 1rem;
+        transition: .5s;
+        color: #0D5661;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius:5px;
+    }
 
         .ProjectInfo .content:hover {
             box-shadow: 0 0 1rem #2D6D4B;
@@ -162,24 +172,46 @@
             margin-top: 1rem;
         }
 
+        .ProjectInfo .content .bar_text h3 {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
         .ProjectInfo .content .bar {
             height: 1.3rem;
-            width:100%;
+            width: 100%;
         }
 
         .ProjectInfo .content:hover .bar {
             height: 1.5rem;
-
         }
+
         .ProjectInfo .content .support {
             font-size: 1.3rem;
             border: 1px solid #2D6D4B;
-            padding:1rem 1rem;
+            padding: 1rem 1rem;
         }
-        .ProjectInfo .content .support:hover {
-            cursor: pointer;
-            animation: jelly 0.5s;
+
+            .ProjectInfo .content .support:hover {
+                cursor: pointer;
+                animation: jelly 0.5s;
+            }
+
+        .ProjectInfo .content .fund_content {
+            padding-top: 1.5rem;
+            margin-top:1rem;
+            border-top:1px dashed #2D6D4B;
         }
+
+            .ProjectInfo .content .fund_content h3 {
+                font-size: 1.5rem;
+                font-weight: bold;
+                margin-bottom: .5rem;
+            }
+
+            .ProjectInfo .content .fund_content p {
+                font-weight: normal;
+            }
 
 
 @keyframes jelly {
@@ -213,7 +245,7 @@
     .left_mark::before {
         content: '';
         position: absolute;
-        top: 15%;
+        top: 13%;
         left: 0;
         width: 5px !important;
         height: 80%;
