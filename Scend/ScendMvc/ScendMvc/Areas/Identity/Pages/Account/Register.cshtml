@@ -1,27 +1,22 @@
 ﻿@page
 @model RegisterModel
 
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="~/Register css/Register.css">
-
 <h1>@ViewData["Title"]</h1>
-<div class="container">
+<div class="container col-md-5">
     <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
         <!---heading---->
-        <header class="heading">Registration</header>
-        <hr>
-        </hr>
+        <header>
+                Registration
+        </header>
         <!---Form starting---->
-        <div class="row ">
+        <main class="row">
             <!-----For email---->
-            <div class="col-sm-12">
+            <div class="form_item col-12">
                 <div class="row">
-                    <div class="col-xs-4">
-                        <label class="firstEmail">Email :</label>
+                    <div class="col-12 col-md-4">
+                        <label>Email :</label>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-12 col-md-8">
                         <input type="text" asp-for="Input.Email" placeholder="Enter your First Email"
                                class="form-control ">
                         <span asp-validation-for="Input.Email" class="text-danger"></span>
@@ -30,12 +25,12 @@
             </div>
 
             <!-----For Password and confirm password---->
-            <div class="col-sm-12">
+            <div class="form_item col-12">
                 <div class="row">
-                    <div class="col-xs-4">
-                        <label class="pass">Password :</label>
+                    <div class="col-12 col-md-4">
+                        <label>Password:</label>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-12 col-md-8">
                         <input type="password" asp-for="Input.Password" placeholder="Enter your Password"
                                class="form-control">
                         <span asp-validation-for="Input.Password" class="text-danger"></span>
@@ -43,12 +38,12 @@
                 </div>
             </div>
 
-            <div class="col-sm-12">
+            <div class="form_item col-12">
                 <div class="row">
-                    <div class="col-xs-4">
-                        <label class="pass">ConfirmPassword :</label>
+                    <div class="col-12 col-md-4">
+                        <label>ConfirmPassword:</label>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-12 col-md-8">
                         <input type="password" asp-for="Input.ConfirmPassword" placeholder="Enter your Password"
                                class="form-control">
                         <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
@@ -56,17 +51,25 @@
                 </div>
             </div>
             <!-----------For Phone number-------->
-            <div class="col-sm-12">
-                <div class="col-sm-12">
-                    @*<div class="btn btn-warning" >Register</div>*@
-                    <button type="submit" class="btn btn-warning">Register</button>
-                </div>
+            <div class="form_item col-12 my-3">
+
+                    <button type="submit" class="Register btn btn-warning">Register</button>
             </div>
-        </div>
+        </main>
     </form>
 </div>
-@section Scripts {
+
+@section endJS
+{
     <partial name="_ValidationScriptsPartial" />
+}
+@section topCSS
+{
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    @*<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">*@
+
+    <link rel="stylesheet" type="text/css" href="~/Register css/Register.css">
 }
 @*<h1>@ViewData["Title"]</h1>
 

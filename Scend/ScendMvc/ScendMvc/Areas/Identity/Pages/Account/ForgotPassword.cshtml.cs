@@ -58,8 +58,8 @@ namespace ScendMvc.Areas.Identity.Pages.Account
 
                 await _emailSender.SendEmailAsync(
                     Input.Email,
-                    "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    "密碼重設",
+                $"<p>{HtmlEncoder.Default.Encode(Input.Email)}您好!</p>您已經進行密碼重設操作 請點擊以下連結<br/><a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a><br/>以確認密碼重設");
 
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }
