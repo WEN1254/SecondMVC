@@ -2,7 +2,7 @@
 #navbar {
     padding:1rem;
     color:#fff;
-    border-left:1rem ridge #aaa;
+    border-left:1rem groove #666;
     box-shadow:0 0.5rem 1rem #666;
     padding-left:1.2rem;
 

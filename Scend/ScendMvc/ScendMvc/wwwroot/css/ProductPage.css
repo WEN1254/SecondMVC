@@ -180,10 +180,18 @@
             cursor: pointer;
             animation: jelly 0.5s;
         }
+.content_text {
+    margin-top: 1rem;
+    padding-bottom:1rem;
+    margin-bottom:1rem;
+}
+                .content_text h3{
+                    font-weight:bold;
+                }
 
 
-@keyframes jelly {
-    0%, 100% {
+                @keyframes jelly {
+                    0%, 100% {
         transform: scale(1, 1);
     }
 
