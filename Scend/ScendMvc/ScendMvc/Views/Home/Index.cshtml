@@ -26,12 +26,13 @@
             </b-carousel>
         </section>
    
-      <section class="fund_title col-12 mx-auto ">
-          <h3 class="col-12 col-md-9">群眾集資</h3>
-      </section>
+
         <section class="card_section">
             <div class="cards row col-12 col-md-9 mx-auto">
-                <a :href=`Proposals/Details/${item.proposalId}` class="mb-3 d-block col-12 col-md-6 col-lg-4" v-for="item in items">
+                <div class="fund_title col-12 mx-auto ">
+                    <h3 class="">群眾集資</h3>
+                </div>
+                <a :href=`Proposals/Details/${item.proposalId}` class="mb-3 d-block col-12 col-md-6 col-lg-3" v-for="item in items">
                     <article>
                         <b-card no-body class="Proposal_Card">
                             <b-card-header class="embed-responsive embed-responsive-4by3 head">
